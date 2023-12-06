@@ -1,8 +1,9 @@
 <script>
 export default {
+    name: 'CartView',
     data() {
         return {
-            name: 'CartView',
+
         }
     }
 }

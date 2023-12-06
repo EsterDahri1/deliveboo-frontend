@@ -1,8 +1,9 @@
 <script>
 export default {
+    name: 'RestaurantView',
     data() {
         return {
-            name: 'RestaurantView',
+
         }
     }
 }

@@ -1,8 +1,9 @@
 <script>
 export default {
+    name: 'HomeView',
     data() {
         return {
-            name: 'HomeView',
+
         }
     }
 }

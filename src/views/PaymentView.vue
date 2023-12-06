@@ -1,8 +1,9 @@
 <script>
 export default {
+    name: 'PaymentView',
     data() {
         return {
-            name: 'PaymentView',
+
         }
     }
 }
