@@ -7,8 +7,6 @@ export default {
         }
     }
 }
-</script>    
- 
 
 <template>
     <h1>Chi Siamo - App di Delivery</h1>
@@ -55,5 +53,6 @@ export default {
         parte della nostra storia e permetterci di portare il meglio della cucina direttamente a te.
     </p>
 </template>
+>>>main
 
 <style lang="scss" scoped></style>
