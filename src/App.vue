@@ -1,7 +1,25 @@
-<script setup>
+<script>
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
 
+
+export default {
+  name: 'App',
+  components: {
+    AppHeader,
+    AppFooter,
+  }
+}
 </script>
 
-<template></template>
+<template>
+  <AppHeader />
 
-<style scoped></style>
+  <main>
+    
+  </main>
+
+  <AppFooter />
+</template>
+
+<style></style>
