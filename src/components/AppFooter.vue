@@ -10,34 +10,47 @@ export default {
 </script>
 
 <template>
-    <footer class="text-center text-lg-start bg-dark shadow">
-         <!-- About -->
-        <section>
-            <div class="container d-flex justify-content-center py-5">
-              
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <div class="col">
+                <div class="about">
+                    <h2>Chi siamo</h2>
+
+                </div>
             </div>
-        </section>
-         <!-- Social -->
-        <section>
-
-        </section>
-         <!-- Download -->
-        <section>
-            
-        </section>
-
-        <!-- Copyright -->
-        <div class="text-center bg-dark text-white p-5">
-            &copy; 2023 Copyright
-            <a class="text-white text-decoration-none" href="">Ester Dahri | Licia Licari | Valentina De Mite | Riccardo Sansone | Riccardo Voltolina |</a>
+            <div class="col">
+                <div class="about">
+                    <h2>Social</h2>
+                    <ul class="social-icons">
+                        <li><a href="#" class="footer-link"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#" class="footer-link"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" class="footer-link"><i class="fab fa-instagram"></i></a></li>
+                        <!-- Aggiungi altri social media icons secondo necessità -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="about">
+                    <h2>Scarica la nostra App</h2>
+                    <h2>Download Our App</h2>
+                    <p>Available on:</p>
+                    <a href="#" class="footer-link"><img src="link_to_apple_store_icon.png" alt="Apple Store"></a>
+                    <a href="#" class="footer-link"><img src="link_to_google_play_icon.png" alt="Google Play"></a>
+                </div>
+            </div>
         </div>
-        <!-- Copyright -->
-    </footer>
+    </div>
+    <div class="footer-section">
+
+        <div class="footer-section">
+            <h2>Social</h2>
+
+        </div>
+
+        <div class="footer-section">
+
+        </div>
+    </div>
 </template>
 
-<style lang="scss" scoped>
-svg {
-    fill: white;
-    font-size: 30px;
-}
-</style>
+<style scoped lang="scss"></style>
