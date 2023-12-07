@@ -32,23 +32,11 @@ export default {
             <div class="col">
                 <div class="about">
                     <h2>Scarica la nostra App</h2>
-                    <h2>Download Our App</h2>
-                    <p>Available on:</p>
-                    <a href="#" class="footer-link"><img src="link_to_apple_store_icon.png" alt="Apple Store"></a>
-                    <a href="#" class="footer-link"><img src="link_to_google_play_icon.png" alt="Google Play"></a>
+                    <p>Disponibilie su:</p>
+                    <a href="#" class="footer-link"><img src="" alt="Apple Store"></a>
+                    <a href="#" class="footer-link"><img src="" alt="Google Play"></a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="footer-section">
-
-        <div class="footer-section">
-            <h2>Social</h2>
-
-        </div>
-
-        <div class="footer-section">
-
         </div>
     </div>
 </template>
