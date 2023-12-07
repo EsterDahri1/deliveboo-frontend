@@ -37,7 +37,14 @@ export default {
                     <a href="#" class="footer-link"><img src="" alt="Google Play"></a>
                 </div>
             </div>
+           
+        
         </div>
+        <div class="text-center bg-dark text-white p-5">
+            &copy; 2023 Copyright
+            <a class="text-white text-decoration-none" href="">Ester Dahri | Licia Licari | Valentina De Mite | Riccardo Sansone | Riccardo Voltolina |</a>
+        </div>
+        <!-- Copyright -->
     </div>
 </template>
 
