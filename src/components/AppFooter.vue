@@ -18,15 +18,15 @@ export default {
                         <div class="about card p-4 border-0 shadow h-100 rounded-0">
                             <h4 class="">Scopri la nostra App</h4>
                             <ul>
-                                <li>Investitori</li>
-                                <li>Chi siamo</li>
-                                <li>Ristoranti</li>
-                                <li>Altro</li>
-                                <li>Pressroom</li>
-                                <li>Porgrammazione</li>
-                                <li>Design</li>
-                                <li>Lavora con noi</li>
-                                <li>Diventa nostro partner</li>
+                                <li class="text-start"><a href="#">Investitori</a></li>
+                                <li class="text-start"><a href="#">Chi siamo</a></li>
+                                <li class="text-start"><a href="#">Ristoranti</a></li>
+                                <li class="text-start"><a href="#">Altro</a></li>
+                                <li class="text-start"><a href="#">Pressroom</a></li>
+                                <li class="text-start"><a href="#">Porgrammazione</a></li>
+                                <li class="text-start"><a href="#">Design</a></li>
+                                <li class="text-start"><a href="#">Lavora con noi</a></li>
+                                <li class="text-start"><a href="#">Diventa nostro partner</a></li>
                             </ul>
                         </div>
                     </div>
@@ -34,10 +34,10 @@ export default {
                         <div class="notes card p-4 border-0 shadow h-100 rounded-0">
                             <h4 class="">Note legali</h4>
                             <ul>
-                                <li>Termini & Condizioni</li>
-                                <li>Informativa sulla privacy</li>
-                                <li>Cookies</li>
-                                <li>Richieste da parte delle Autorità Pubbliche</li>
+                                <li class="text-start"><a href="#">Termini & Condizioni</a></li>
+                                <li class="text-start"><a href="#">Informativa sulla privacy</a></li>
+                                <li class="text-start"><a href="#">Cookies</a></li>
+                                <li class="text-start"><a href="#">Richieste da parte delle Autorità Pubbliche</a></li>
                             </ul>
                         </div>
                     </div>
@@ -54,17 +54,26 @@ export default {
                     <div class="col">
                         <div class="help card p-4 border-0 shadow h-100 rounded-0">
                             <h4 class="">Scarica la nostra App</h4>
-                            <a href="#" class="footer-link apple">
+                            <a href="https://www.apple.com/it/app-store/" class="footer-link apple">
                                 <img src="../assets/img/apple.png" alt="">
                             </a>
-                            <a href="#" class="footer-link">
+                            <a href="https://play.google.com/store/games?hl=it&gl=US" class="footer-link">
                                 <img src="../assets/img/Google_Play_Store_badge_IT.svg.png" alt="">
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bottom"></div>
+            <div class="bottom d-flex justify-content-between p-3">
+                <div class="social">
+                    <i class="pe-3 fa-brands fa-facebook fa-xl"></i>
+                    <i class="pe-3 fa-brands fa-instagram fa-xl"></i>
+                    <i class="pe-3 fa-brands fa-x-twitter fa-xl"></i>
+                </div>
+                <div class="copyright">
+                    &copy; Boolean 2023 Team 4
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -87,12 +96,25 @@ export default {
 
     ul {
         list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     .help {
         img {
             width: 100px;
         }
+    }
+}
+
+.bottom {
+    .social {
+        color: $del_light;
+        text-decoration: none;
+    }
+
+    .copyright {
+        color: rgba(255, 255, 255, 0.383);
     }
 }
 </style>
