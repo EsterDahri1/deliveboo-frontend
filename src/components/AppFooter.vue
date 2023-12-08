@@ -64,17 +64,13 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="bottom d-flex justify-content-between p-3">
-                <div class="social">
-                    <i class="pe-3 fa-brands fa-facebook fa-xl"></i>
-                    <i class="pe-3 fa-brands fa-instagram fa-xl"></i>
-                    <i class="pe-3 fa-brands fa-x-twitter fa-xl"></i>
-                </div>
-                <div class="copyright">
-                    &copy; Boolean 2023 Team 4
-                </div>
-            </div>
         </div>
+        <div class="text-center bg-dark text-white p-5">
+            &copy; 2023 Copyright
+            <a class="text-white text-decoration-none" href="">Ester Dahri | Licia Licari | Valentina De Mite | Riccardo
+                Sansone | Riccardo Voltolina |</a>
+        </div>
+        <!-- Copyright -->
     </div>
 </template>
 

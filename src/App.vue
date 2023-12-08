@@ -1,15 +1,14 @@
 <script>
-// import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
 import AppHeader from './components/AppHeader.vue';
-
+import { RouterView } from 'vue-router';
 
 export default {
   name: 'App',
   components: {
-    // AppHeader,
     AppHeader,
     AppFooter,
+    RouterView
   }
 }
 </script>
@@ -18,7 +17,7 @@ export default {
   <AppHeader />
 
   <main>
-    
+    <RouterView />
   </main>
 
   <AppFooter />
