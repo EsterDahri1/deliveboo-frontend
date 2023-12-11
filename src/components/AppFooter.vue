@@ -19,7 +19,9 @@ export default {
                             <h4 class="">Scopri la nostra App</h4>
                             <ul>
                                 <li class="text-start"><a href="#">Investitori</a></li>
-                                <li class="text-start"><a href="#">Chi siamo</a></li>
+                                <li class="nav-item">
+                                    <router-link to="/about" class="nav-link">Chi siamo</router-link>
+                                </li>
                                 <li class="text-start"><a href="#">Ristoranti</a></li>
                                 <li class="text-start"><a href="#">Altro</a></li>
                                 <li class="text-start"><a href="#">Pressroom</a></li>
