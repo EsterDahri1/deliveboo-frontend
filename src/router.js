@@ -4,7 +4,7 @@ import AboutView from "./views/AboutView.vue";
 import RestaurantView from "./views/RestaurantView.vue";
 import PaymentView from "./views/PaymentView.vue";
 import CartView from "./views/CartView.vue";
-import AllRestaurantView from "./views/AllRestaurantView.vue";
+import CineseView from "./views/CineseView.vue";
 
 import NotFoundView from "./views/NotFoundView.vue";
 
@@ -20,9 +20,9 @@ const routes = [
         component: RestaurantView,
     },
     {
-        path: '/all/Restaurant',
-        name: 'allRestaurant',
-        component: AllRestaurantView,
+        path: '/cinese',
+        name: 'cinese',
+        component: CineseView,
     },
     {
         path: '/about',
