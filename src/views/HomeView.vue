@@ -45,7 +45,7 @@ export default {
 @use '../assets/scss/partials/variables' as *;
 
 .body {
-    background-color: #1075fa;
+    background-color: $del_light;
 
     .wrapper {
         max-width: 1440px;
