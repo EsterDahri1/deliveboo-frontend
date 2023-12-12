@@ -1,14 +1,15 @@
 <script>
 import AppFooter from './components/AppFooter.vue';
 import AppHeader from './components/AppHeader.vue';
-// import { RouterView } from 'vue-router';
+
+import { RouterView } from 'vue-router';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppFooter,
-    // RouterView
+    RouterView,
   }
 }
 </script>
@@ -33,10 +34,12 @@ export default {
                 </div>
             </div>
         </section>
-        <section class="swiper">
-            <!-- mettere carosello qui -->
+        <section class="carosello">
+       
+
+          
         </section>
-        <!-- /swiper -->
+        <!-- /carosello -->
 
         <section class="banner_consegna text-white text-center">
           <div class="img_banner_consegna">

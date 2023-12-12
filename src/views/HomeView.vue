@@ -1,11 +1,13 @@
 <script>
+
 export default {
     name: 'HomeView',
     data() {
         return {
 
         }
-    }
+    },
+
 }
 </script>
 
@@ -24,7 +26,7 @@ export default {
             </div>
         </section>
         <section class="swiper">
-            <!-- mettere carosello qui -->
+            
         </section>
         <!-- /swiper -->
 
