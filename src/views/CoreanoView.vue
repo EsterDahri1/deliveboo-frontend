@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'CineseView',
+    name: 'CoreanoView',
     data() {
         return {
             base_url: 'http://localhost:8000',
@@ -47,7 +47,7 @@ export default {
 
                         // some verifica se dentro l' array è presente la stringa
 
-                        return restaurant.typologies.some(typology => typology.name_typology === 'cinese')
+                        return restaurant.typologies.some(typology => typology.name_typology === 'coreano')
                     });
 
                 })
