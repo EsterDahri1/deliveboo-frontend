@@ -5,17 +5,28 @@ export default {
     data() {
         return {
             base_url: 'http://localhost:8000',
-            restaurant_url: '/api/restaurants',
-            restaurants: [],
+            typologies_api: '/api/typologies',
+            typologies: [],
 
         }
     },
     mounted() {
 
         // richiamo la funzione per la mia chiamata
+        // axios
+        //     .get(this.base_url + this.typologies_api)
+        //     .then(response => {
+        //         console.log(response);
+        //         this.typologies = response.data.result
+        //         // console.log(this.restaurants);
+        //         console.log(this.typologies);
+        //     })
+        //     .catch(err => {
+        //         console.error(err);
+        //     })
 
         this.axiosCall()
-        
+
 
     },
     methods: {
@@ -26,15 +37,15 @@ export default {
 
         axiosCall: function () {
             axios
-            .get(this.base_url + this.restaurant_url)
-            .then(response => {
-                console.log(response);
-                this.restaurants = response.data.result
-                // console.log(this.restaurants);
-            })
-            .catch(err => {
-                console.error(err);
-            })
+                .get(this.base_url + this.typologies_api)
+                .then(response => {
+                    console.log(response);
+                    this.typologies = response.data.result
+                    console.log(this.typologies);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
 
 
         },
@@ -51,23 +62,34 @@ export default {
         <section class="intro">
             <div class="wrapper pt-5 d-flex flex-column align-items-center justify-content-center">
                 <h1 class="text-center">Il tuo ristorante preferito ad un salto di distanza</h1>
-                <h4 class="text-center">your craving right away</h4>
+                <h4 class="text-center py-3">your craving right away</h4>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                    <input type="text" class="form-control" placeholder="Ristoranti" aria-label="Ristoranti"
                         aria-describedby="basic-addon1">
                 </div>
-
             </div>
+            <div class="wrapper">
+
+                <ul class="d-flex justify-content-center align-items-center">
+
+                    <router-link to="/all/Restaurant" class="nav-link"><li v-for="typology in typologies" class="btn border rounded-pill mx-2">{{ typology.name_typology }}</li></router-link>
+
+    
+                    
+    
+                </ul>
+            </div>
+
         </section>
         <section class="swiper">
-            
+
         </section>
         <!-- /swiper -->
 
         <section class="banner_consegna">
-           
-            
+
+
         </section>
 
         <section>

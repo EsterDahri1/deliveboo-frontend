@@ -4,6 +4,8 @@ import AboutView from "./views/AboutView.vue";
 import RestaurantView from "./views/RestaurantView.vue";
 import PaymentView from "./views/PaymentView.vue";
 import CartView from "./views/CartView.vue";
+import AllRestaurantView from "./views/AllRestaurantView.vue";
+
 import NotFoundView from "./views/NotFoundView.vue";
 
 const routes = [
@@ -16,6 +18,11 @@ const routes = [
         path: '/Restaurant',
         name: 'restaurant',
         component: RestaurantView,
+    },
+    {
+        path: '/all/Restaurant',
+        name: 'allRestaurant',
+        component: AllRestaurantView,
     },
     {
         path: '/about',
