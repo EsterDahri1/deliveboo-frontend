@@ -26,7 +26,7 @@ export default {
     <div class="p-5 bg_menu_restaurant">
 
       <div class="container-fluid pt-3 pb-1 rounded-5 bg_choice">
-        <ul class="d-flex gap-1 justify-content-center align-content-center list-unstyled text-white fw-semibold">
+        <ul class="d-flex gap-1 justify-content-center align-content-center list-unstyled text-white fw-semibold flex-wrap">
           <li class="hover_li">Bevande</li>
           <li class="hover_li">| Antipasti |</li>
           <li class="hover_li"> Primi </li>
