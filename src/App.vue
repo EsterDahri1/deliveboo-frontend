@@ -17,7 +17,6 @@ export default {
   <AppHeader />
 
   <main>
-    
   </main>
 
   <AppFooter />
