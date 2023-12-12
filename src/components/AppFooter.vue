@@ -22,7 +22,9 @@ export default {
                                 <li class="nav-item">
                                     <router-link to="/about" class="nav-link">Chi siamo</router-link>
                                 </li>
-                                <li class="text-start"><a href="#">Ristoranti</a></li>
+                                <li class="nav-item">
+                                    <router-link to="/Restaurant" class="nav-link">Ristoranti</router-link>
+                                </li>
                                 <li class="text-start"><a href="#">Altro</a></li>
                                 <li class="text-start"><a href="#">Pressroom</a></li>
                                 <li class="text-start"><a href="#">Porgrammazione</a></li>
