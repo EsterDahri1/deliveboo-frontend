@@ -30,16 +30,22 @@ export default {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Home</a>
-                                    <!-- <router-link to="/views/HomeVue.vue" class="nav-link">Home</router-link> -->
+                                    <!-- <a class="nav-link" aria-current="page" href="#">Home</a> -->
+                                    <router-link to="/" class="nav-link">Home</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Cart <i class="fa-solid fa-cart-shopping"></i></a>
-                                    <!-- <router-link to="/views/CartVue.vue" class="nav-link">Cart <i class="fa-solid fa-cart-shopping"></i></router-link> -->
+                                    <router-link to="/about" class="nav-link">Chi siamo</router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <!-- <a class="nav-link" href="#">Cart <i class="fa-solid fa-cart-shopping"></i></a> -->
+                                    <router-link to="/Payment" class="nav-link">Carrello<i
+                                            class="fa-solid fa-cart-shopping"></i></router-link>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Login <i
                                             class="fa-solid fa-arrow-right-to-bracket"></i></a>
+
+                                    <!--TODO ask what's that for...-->
                                     <!-- <a href="https etc" class="btn item" target="__blank">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a> -->
                                 </li>
                             </ul>

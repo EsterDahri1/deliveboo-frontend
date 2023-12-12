@@ -1,13 +1,48 @@
 <script>
-
+import axios from 'axios'
 export default {
     name: 'HomeView',
     data() {
         return {
+            base_url: 'http://localhost:8000',
+            restaurant_url: '/api/restaurants',
+            restaurants: [],
 
         }
     },
+    mounted() {
 
+        // richiamo la funzione per la mia chiamata
+
+        this.axiosCall()
+        
+
+    },
+    methods: {
+
+
+
+        // eseguo la chiamata axios
+
+        axiosCall: function () {
+            axios
+            .get(this.base_url + this.restaurant_url)
+            .then(response => {
+                console.log(response);
+                this.restaurants = response.data.result
+                // console.log(this.restaurants);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+
+
+        },
+
+
+
+
+    },
 }
 </script>
 
@@ -47,7 +82,7 @@ export default {
 @use '../assets/scss/partials/variables' as *;
 
 .body {
-    background-color: #1075fa;
+    background-color: $del_light;
 
     .wrapper {
         max-width: 1440px;

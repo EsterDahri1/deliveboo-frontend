@@ -13,14 +13,18 @@ export default {
     <div class="footer bg_header_footer">
         <div class="container">
             <div class="top p-3">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
                     <div class="col">
                         <div class="about card p-4 border-0 shadow h-100 rounded-0">
                             <h4 class="">Scopri la nostra App</h4>
                             <ul>
                                 <li class="text-start"><a href="#">Investitori</a></li>
-                                <li class="text-start"><a href="#">Chi siamo</a></li>
-                                <li class="text-start"><a href="#">Ristoranti</a></li>
+                                <li class="nav-item">
+                                    <router-link to="/about" class="nav-link">Chi siamo</router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/Restaurant" class="nav-link">Ristoranti</router-link>
+                                </li>
                                 <li class="text-start"><a href="#">Altro</a></li>
                                 <li class="text-start"><a href="#">Pressroom</a></li>
                                 <li class="text-start"><a href="#">Porgrammazione</a></li>
@@ -54,21 +58,23 @@ export default {
                     <div class="col">
                         <div class="help card p-4 border-0 shadow h-100 rounded-0">
                             <h4 class="">Scarica la nostra App</h4>
-                            <a href="https://www.apple.com/it/app-store/" class="footer-link apple">
-                                <img src="../assets/img/apple.png" alt="">
-                            </a>
-                            <a href="https://play.google.com/store/games?hl=it&gl=US" class="footer-link">
-                                <img src="../assets/img/Google_Play_Store_badge_IT.svg.png" alt="">
-                            </a>
+                            <div class="d-flex flex-column gap-3 py-2">
+                                <a href="https://www.apple.com/it/app-store/" class="footer-link apple">
+                                    <img src="../assets/img/apple.png" alt="">
+                                </a>
+                                <a href="https://play.google.com/store/games?hl=it&gl=US" class="footer-link">
+                                    <img src="../assets/img/Google_Play_Store_badge_IT.svg.png" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="bottom d-flex justify-content-between p-3">
                 <div class="social">
-                    <i class="pe-3 fa-brands fa-facebook fa-xl"></i>
-                    <i class="pe-3 fa-brands fa-instagram fa-xl"></i>
-                    <i class="pe-3 fa-brands fa-x-twitter fa-xl"></i>
+                    <a href="https://www.facebook.com/"><i class="pe-3 fa-brands fa-facebook fa-xl"></i></a>
+                    <a href="https://www.instagram.com/"><i class="pe-3 fa-brands fa-instagram fa-xl"></i></a>
+                    <a href="https://twitter.com/?lang=en"><i class="pe-3 fa-brands fa-x-twitter fa-xl"></i></a>
                 </div>
                 <div class="copyright">
                     &copy; Boolean 2023 Team 4
@@ -88,10 +94,22 @@ export default {
 
 .top {
 
+    .card:hover {
+        transform: translate3D(0, -1px, 0) scale(1.03);
+    }
+
     a {
         color: $del_black;
         font-size: 15px;
         text-decoration: none;
+    }
+
+    a:hover {
+        color: $del_danger;
+    }
+
+    a:focus {
+        color: $del_dark;
     }
 
     ul {
@@ -102,15 +120,24 @@ export default {
 
     .help {
         img {
-            width: 100px;
+            width: 120px;
+            height: 40px;
         }
     }
 }
 
 .bottom {
     .social {
-        color: $del_light;
-        text-decoration: none;
+
+        a {
+            color: $del_light;
+            text-decoration: none;
+        }
+
+        a:hover {
+            font-size: larger;
+        }
+
     }
 
     .copyright {
