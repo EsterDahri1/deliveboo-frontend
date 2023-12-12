@@ -43,8 +43,6 @@ export default {
 
 
     },
-
-
 }
 </script>
 
@@ -63,14 +61,14 @@ export default {
             </div>
         </section>
         <section class="swiper">
-            <!-- mettere carosello qui -->
+            
         </section>
         <!-- /swiper -->
 
         <section class="banner_consegna">
-            <!-- mettere banner qui -->
+           
+            
         </section>
-        <!-- /banner_consegna -->
 
         <section>
 
@@ -94,7 +92,7 @@ export default {
 
     .certificates {
         .card {
-            border: dotted rgb(255, 169, 104) 2px;
+            border: dotted rgb(248, 124, 86) 2px;
         }
     }
 }
