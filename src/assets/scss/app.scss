@@ -1,3 +1,11 @@
 @use 'bootstrap';
 
 @use './partials/variables';
+
+.img_banner_consegna {
+    background-image: url('https://content.r9cdn.net/rimg/dimg/3f/6c/c1cdbc20-city-300365-1738dc178b1.jpg?crop=true&width=2160&height=1215&xhint=1807&yhint=1453&outputtype=webp;center,top');
+    background-size: cover;
+    background-position: 0 83%;
+    width: 100%;
+    min-height: 500px;
+}
