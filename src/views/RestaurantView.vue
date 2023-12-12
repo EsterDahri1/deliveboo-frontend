@@ -37,7 +37,7 @@ export default {
 
       <div class="container-fluid d-flex justify-content-center mt-3">
         <div class="card shadow border-0 w-50 h-25 card_hover">
-          <img src="./assets/img/nuggets.jpg" style="object-fit: cover; width: 100%; height: 50%;" class="card-img-top" alt="...">
+          <img src="../assets/img/nuggets.jpg" style="object-fit: cover; width: 100%; height: 50%;" class="card-img-top" alt="...">
           <h3 class="card-text text-center py-2 bg_menu_restaurant text-white">Nuggets</h3>
         </div>
       </div>
@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .bg_banner {
-  background-image: url("./assets/img/bgmenu.jpg.webp");
+  background-image: url("../assets/img/bgmenu.jpg.webp");
   object-fit: cover;
   background-position: center;
   background-size: cover;
@@ -66,12 +66,12 @@ export default {
 //   da mettere la variabile
 }
 .hover_li:hover{
-  font-size: larger;
+  transform: scale(.9);
   transition: 0.25s;
 }
 .card_hover:hover{
-    transform: scale(.9);
+    transform: scale(.99);
     transition: 0.3s;
-    filter: grayscale(1);
+    filter: opacity(80%);
 }
 </style>
