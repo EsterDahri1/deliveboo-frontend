@@ -73,11 +73,13 @@ export default {
 
                 <ul class="d-flex justify-content-center align-items-center">
 
-                    <router-link to="/all/Restaurant" class="nav-link"><li v-for="typology in typologies" class="btn border rounded-pill mx-2">{{ typology.name_typology }}</li></router-link>
+                    <li v-for="typology in typologies" class="btn border rounded-pill mx-2"><router-link
+                            :to="'/' + typology.name_typology" class="nav-link">{{ typology.name_typology }}</router-link>
+                    </li>
 
-    
-                    
-    
+
+
+
                 </ul>
             </div>
 

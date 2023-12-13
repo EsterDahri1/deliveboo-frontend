@@ -4,7 +4,17 @@ import AboutView from "./views/AboutView.vue";
 import RestaurantView from "./views/RestaurantView.vue";
 import PaymentView from "./views/PaymentView.vue";
 import CartView from "./views/CartView.vue";
-import AllRestaurantView from "./views/AllRestaurantView.vue";
+import CineseView from "./views/CineseView.vue";
+import AmericanoView from "./views/AmericanoView.vue";
+import GiapponeseView from "./views/GiapponeseView.vue";
+import MessicanoView from "./views/MessicanoView.vue";
+import CoreanoView from "./views/CoreanoView.vue";
+import ItalianoView from "./views/ItalianoView.vue";
+
+
+
+
+
 
 import NotFoundView from "./views/NotFoundView.vue";
 
@@ -20,10 +30,36 @@ const routes = [
         component: RestaurantView,
     },
     {
-        path: '/all/Restaurant',
-        name: 'allRestaurant',
-        component: AllRestaurantView,
+        path: '/cinese',
+        name: 'cinese',
+        component: CineseView,
     },
+    {
+        path: '/coreano',
+        name: 'coreano',
+        component: CoreanoView,
+    },
+    {
+        path: '/giapponese',
+        name: 'giapponese',
+        component: GiapponeseView,
+    },
+    {
+        path: '/italiano',
+        name: 'italiano',
+        component: ItalianoView,
+    },
+    {
+        path: '/messicano',
+        name: 'messicano',
+        component: MessicanoView,
+    },
+    {
+        path: '/americano',
+        name: 'americano',
+        component: AmericanoView,
+    },
+
     {
         path: '/about',
         name: 'about',
