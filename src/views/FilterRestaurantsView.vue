@@ -49,8 +49,14 @@ export default {
                     this.selectedTypologies.forEach(singleTypology => {
 
                         this.restaurants = this.restaurants.filter((restaurant) => {
+
+                            console.log(restaurant.typologies);
+
+                            if (restaurant.typologies.length === this.selectedTypologies.length) {
+                                
+                                return restaurant.typologies.some(typology => typology.name_typology === singleTypology)
+                            }
                             
-                            return restaurant.typologies.some(typology => typology.name_typology === singleTypology)
 
                         });
                     })
@@ -70,7 +76,7 @@ export default {
             // this.restaurants.forEach(restaurant => {
             //     this.restaurant.push(restaurant)
             // });
-            console.log(this.selectedTypologies);
+            console.log(this.selectedTypologies.length);
         },
 
 
