@@ -10,6 +10,8 @@ import GiapponeseView from "./views/GiapponeseView.vue";
 import MessicanoView from "./views/MessicanoView.vue";
 import CoreanoView from "./views/CoreanoView.vue";
 import ItalianoView from "./views/ItalianoView.vue";
+import FilterRestaurantsView from "./views/FilterRestaurantsView.vue";
+
 
 
 
@@ -29,6 +31,14 @@ const routes = [
         name: 'restaurant',
         component: RestaurantView,
     },
+
+    {
+        path: '/restaurants/:typology',  // :typology è un parametro dinamico
+        name: 'restaurants',
+        component: FilterRestaurantsView,
+        props: true  // Per passare il parametro come prop alla vista
+    },
+
     {
         path: '/cinese',
         name: 'cinese',

@@ -7,6 +7,8 @@ export default {
             base_url: 'http://localhost:8000',
             typologies_api: '/api/typologies',
             typologies: [],
+            clickedItems: [],
+            stringItems: '',
 
         }
     },
@@ -39,17 +41,32 @@ export default {
             axios
                 .get(this.base_url + this.typologies_api)
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
                     this.typologies = response.data.result
-                    console.log(this.typologies);
+                    // console.log(this.typologies);
                 })
                 .catch(err => {
                     console.error(err);
                 })
+        },
+
+        // al click di ciascun elemento, lo inserisco dentro all'array
+
+        onSelect(item) {
+            if (this.clickedItems.includes(item.name_typology)) {
+                console.log('qui');
+                this.clickedItems = this.clickedItems.filter(e => e !== item.name_typology)
+            } else {
+                this.clickedItems.push(item.name_typology)
+            }
+
+            this.stringItems = this.clickedItems.join('&')
+            console.log(this.stringItems);
 
 
         },
 
+      
 
 
 
@@ -73,9 +90,22 @@ export default {
 
                 <ul class="d-flex justify-content-center align-items-center">
 
-                    <li v-for="typology in typologies" class="btn border rounded-pill mx-2"><router-link
+                    <div v-for="typology in typologies" class="form-check">
+                        <input class="form-check-input" type="checkbox" :value="typology.name_typology"
+                            :id="'flexCheck_' + typology.name_typology" @click="() => onSelect(typology)"
+                            >
+                        <label class="form-check-label" :for="'flexCheck_' + typology.name_typology">
+                            {{ typology.name_typology }}
+                        </label>
+                    </div>
+                    <button> <router-link :to="'/restaurants/' + stringItems"
+                        class="nav-link">Vai ai ristoranti</router-link>
+                    </button>
+                    <!-- <router-link :to="'/restaurants/' + stringItems" class="nav-link">Vai ai ristoranti</router-link> -->
+
+                    <!-- <li v-for="typology in typologies" class="btn border rounded-pill mx-2"><router-link
                             :to="'/' + typology.name_typology" class="nav-link">{{ typology.name_typology }}</router-link>
-                    </li>
+                    </li> -->
 
 
 
