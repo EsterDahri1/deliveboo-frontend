@@ -62,8 +62,6 @@ export default {
 
             this.stringItems = this.clickedItems.join('&')
             console.log(this.stringItems);
-
-
         },
 
       
@@ -98,7 +96,7 @@ export default {
                             {{ typology.name_typology }}
                         </label>
                     </div>
-                    <button> <router-link :to="'/restaurants/' + stringItems"
+                    <button> <router-link :to="{path: '/restaurants', query: {typologies: stringItems}}"
                         class="nav-link">Vai ai ristoranti</router-link>
                     </button>
                     <!-- <router-link :to="'/restaurants/' + stringItems" class="nav-link">Vai ai ristoranti</router-link> -->

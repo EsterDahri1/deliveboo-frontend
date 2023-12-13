@@ -33,7 +33,7 @@ const routes = [
     },
 
     {
-        path: '/restaurants/:typology',  // :typology è un parametro dinamico
+        path: '/restaurants',  // :typology è un parametro dinamico
         name: 'restaurants',
         component: FilterRestaurantsView,
         props: true  // Per passare il parametro come prop alla vista

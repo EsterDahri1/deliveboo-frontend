@@ -8,6 +8,8 @@ export default {
             restaurants_api: '/api/restaurants',
             restaurants: [],
             filteredRestaurants: [],
+            selectedTypologies: '',
+            restaurant: [],
 
 
         }
@@ -42,21 +44,35 @@ export default {
                 .get(this.base_url + this.restaurants_api)
                 .then(response => {
                     this.restaurants = response.data.result.data
-                    // console.log(this.restaurants);
-                    this.restaurants = this.restaurants.filter((restaurant) => {
+                    console.log(this.restaurants);
 
-                        // some verifica se dentro l' array è presente la stringa
+                    this.selectedTypologies.forEach(singleTypology => {
 
-                        return restaurant.typologies.some(typology => typology.name_typology === 'italiano')
-                    });
+                        this.restaurants = this.restaurants.filter((restaurant) => {
+                            
+                            return restaurant.typologies.some(typology => typology.name_typology === singleTypology)
+
+                        });
+                    })
 
                 })
                 .catch(err => {
                     console.error(err);
                 })
 
+            // const chars = str.split('');
+            // console.log(chars[8]);
+            console.log(this.$route.query.typologies);
+            this.selectedTypologies = this.$route.query.typologies.split('&')
+            // this.typology_url = this.typology_url.join(' ')
 
+            // console.log(this.typology_url)
+            // this.restaurants.forEach(restaurant => {
+            //     this.restaurant.push(restaurant)
+            // });
+            console.log(this.selectedTypologies);
         },
+
 
 
         // al click del bottone cinese attivo la funzione
@@ -87,7 +103,7 @@ export default {
         <div class="container py-5">
             <div class="d-flex">
 
-                
+
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
