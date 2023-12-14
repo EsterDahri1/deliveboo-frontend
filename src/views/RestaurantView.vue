@@ -1,11 +1,21 @@
 <script>
+import axios from 'axios';
+
 export default {
     name: 'RestaurantView',
     data() {
         return {
+          restaurant: {},
 
         }
-    }
+    },
+    mounted() {
+      const url = `http://localhost:8000/api/restaurants/${this.$route.params.id}`;
+      axios.get(url)
+      .then(resp => {
+        console.log(resp.data.result);
+      })
+    },
 }
 </script>
 
