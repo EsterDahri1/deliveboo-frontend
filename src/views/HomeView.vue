@@ -166,7 +166,7 @@ export default {
             <button class="bn632-hover bn21" role="button">
               <router-link
                 :to="{
-                  path: '/restaurants',
+                  path: '/cart',
                   query: { typologies: stringItems },
                 }"
                 class="nav-link"
