@@ -14,25 +14,13 @@ export default {
         <div class="container-fluid d-flex justify-content-between">
           <div class="logo">
             <a class="navbar-brand" href="#">
-              <img
-                src="../assets/img/logosfondo.png"
-                alt="Sugar Glider logo"
-                width="100"
-                height="100"
-                class=""
-              />
+              <img src="../assets/img/logosfondo.png" alt="Sugar Glider logo" width="100" height="100" class="" />
             </a>
           </div>
           <div class="menu_navbar">
-            <button
-              class="navbar-toggler bg-white"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -42,20 +30,14 @@ export default {
                   <router-link to="/" class="nav-link">Home</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link to="/about" class="nav-link"
-                    >Chi siamo</router-link
-                  >
+                  <router-link to="/about" class="nav-link">Chi siamo</router-link>
                 </li>
                 <li class="nav-item">
                   <!-- <a class="nav-link" href="#">Cart <i class="fa-solid fa-cart-shopping"></i></a> -->
-                  <router-link to="/cart" class="nav-link"
-                    >Carrello<i class="fa-solid fa-cart-shopping"></i
-                  ></router-link>
+                  <router-link to="/cart" class="nav-link">Carrello<i class="fa-solid fa-cart-shopping"></i></router-link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"
-                    >Login <i class="fa-solid fa-arrow-right-to-bracket"></i
-                  ></a>
+                  <a class="nav-link" href="#">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
 
                   <!--TODO ask what's that for...-->
                   <!-- <a href="https etc" class="btn item" target="__blank">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a> -->
