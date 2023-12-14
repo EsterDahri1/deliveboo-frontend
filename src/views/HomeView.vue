@@ -128,22 +128,24 @@ export default {
         <div class="container py-5">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <div v-for="restaurant in allRestaurants" class="col">
-              <div class="card h-100">
-                <img
-                  class="card-img-top restaurant_images"
-                  src="https://picsum.photos/200/300"
-                  alt="Title"
-                />
-                <div class="card-body">
-                  <h4 class="card-title">{{ restaurant.name }}</h4>
-                  <p
-                    v-for="typology in restaurant.typologies"
-                    class="card-text"
-                  >
-                    {{ typology.name_typology }}
-                  </p>
-                </div>
-              </div>
+                <router-link :to="{name: 'restaurant', params: {id:restaurant.id}}">
+                    <div class="card h-100">
+                      <img
+                        class="card-img-top restaurant_images"
+                        :src="restaurant.cover_image"
+                        alt="Title"
+                      />
+                      <div class="card-body">
+                        <h4 class="card-title">{{ restaurant.name }}</h4>
+                        <p
+                          v-for="typology in restaurant.typologies"
+                          class="card-text"
+                        >
+                          {{ typology.name_typology }}
+                        </p>
+                      </div>
+                    </div>
+                </router-link>
             </div>
           </div>
         </div>

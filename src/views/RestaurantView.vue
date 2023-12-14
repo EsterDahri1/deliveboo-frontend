@@ -6,14 +6,20 @@ export default {
     data() {
         return {
           restaurant: {},
-
+          value: '',
         }
     },
     mounted() {
-      const url = `http://localhost:8000/api/restaurants/${this.$route.params.id}`;
+      const url = `http://localhost:8000/api/restaurant/${this.$route.params.id}`;
       axios.get(url)
       .then(resp => {
         console.log(resp.data.result);
+        this.restaurant = resp.data.result
+        this.value = this.restaurant.typologies
+
+      })
+      .catch(err => {
+        console.log(err.message);
       })
     },
 }
@@ -25,9 +31,10 @@ export default {
 
         
     <!-- <RouterView /> -->
-    <div class="p-5 bg_banner">
-      <div class="container-fluid py-5">
-        <h3 class="fw-bold text-center">RestaurantName gustati i nostri prodotti!</h3>
+    <div class="img_container text-center">
+      <img class="bg_banner w-100" :src=" restaurant.cover_image" alt="">
+      <div class="container-fluid">
+        <h3 class="fw-bold text-center bg-white p-3 rounded-3 h3_banner">{{ restaurant.name }} gustati i nostri prodotti!</h3>
       </div>
     </div>
 
@@ -37,18 +44,15 @@ export default {
 
       <div class="container-fluid pt-3 pb-1 rounded-5 bg_choice">
         <ul class="d-flex gap-1 justify-content-center align-content-center list-unstyled text-white fw-semibold flex-wrap">
-          <li class="hover_li">Bevande</li>
-          <li class="hover_li">| Antipasti |</li>
-          <li class="hover_li"> Primi </li>
-          <li class="hover_li">| Secondi |</li>
-          <li class="hover_li"> Desserts </li>
+          <li class="hover_li">Gustati il nostro menu</li>
+          
         </ul>
       </div>
 
-      <div class="container-fluid d-flex justify-content-center mt-3">
+      <div v-for="product in restaurant.products" class="container-fluid d-flex justify-content-center mt-3">
         <div class="card shadow border-0 w-50 h-25 card_hover">
-          <img src="../assets/img/nuggets.jpg" style="object-fit: cover; width: 100%; height: 50%;" class="card-img-top" alt="...">
-          <h3 class="card-text text-center py-2 bg_menu_restaurant text-white">Nuggets</h3>
+          <img :src="`http://localhost:8000/storage/${product.cover_image}`" style="object-fit: cover; width: 100%; height: 50%;" class="card-img-top" alt="...">
+          <h3 class="card-text text-center py-2 bg_menu_restaurant text-white">{{ product.name }}</h3>
         </div>
       </div>
 
@@ -60,10 +64,17 @@ export default {
 
 <style lang="scss" scoped>
 .bg_banner {
-  background-image: url("../assets/img/bgmenu.jpg.webp");
-  object-fit: cover;
-  background-position: center;
-  background-size: cover;
+  position: relative;
+  margin: auto;
+  object-fit: fill;
+  object-position: center;
+}
+
+.h3_banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
 }
 
 .bg_menu_restaurant {
