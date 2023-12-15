@@ -14,7 +14,7 @@ export default {
     const url = `http://localhost:8000/api/restaurant/${this.$route.params.id}`;
     axios.get(url)
       .then(resp => {
-        console.log(resp.data.result);
+        // console.log(resp.data.result);
         this.restaurant = resp.data.result
         this.value = this.restaurant.typologies
 
@@ -22,6 +22,9 @@ export default {
       .catch(err => {
         console.log(err.message);
       })
+
+      this.store.cart = [];
+      this.store.saveCartToLocalStorage();
   },
   methods: {
     getCart(product) {
@@ -30,9 +33,12 @@ export default {
         if (store.cart[0].restaurant_id !== product.restaurant_id) {
           console.log(store.cart[0].restaurant_id, "TEST CART1 id");
           this.alert = true;
+
           return;
         }
+
       }
+
       console.log(this.alert);
       const existingProduct = store.cart.find(
         (productCart) => productCart.id === product.id
@@ -62,6 +68,10 @@ export default {
     closeModal() {
       this.alert = false;
     },
+    addCart(product) {
+      
+      this.$emit('handleCart', product)
+    }
   },
 }
 </script>
