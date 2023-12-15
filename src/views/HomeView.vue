@@ -67,85 +67,49 @@ export default {
 <template>
   <div class="body">
     <section class="intro">
-      <div
-        class="wrapper pt-5 d-flex flex-column align-items-center justify-content-center"
-      >
+      <div class="wrapper pt-5 d-flex flex-column align-items-center justify-content-center">
         <h1 class="text-center fw-bold orange font">
           Il tuo ristorante preferito ad un salto di distanza
         </h1>
         <div class="d-flex justify-content-center my-3 align-items-center">
           <h4 class="text-center py-3 font">your craving right away</h4>
-          <img
-            class="w-25 align-self-center"
-            src="../assets/img/arrow.png"
-            alt=""
-          />
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1"
-            ><i class="fa-solid fa-magnifying-glass"></i
-          ></span>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Ristoranti"
-            aria-label="Ristoranti"
-            aria-describedby="basic-addon1"
-          />
+          <img class="w-25 align-self-center" src="../assets/img/arrow.png" alt="" />
         </div>
       </div>
-      <div class="wrapper">
-        <ul class="d-flex justify-content-center align-items-center">
-          <div v-for="typology in typologies" class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              :value="typology.name_typology"
-              :id="'flexCheck_' + typology.name_typology"
-              @click="() => onSelect(typology)"
-            />
-            <label
-              class="form-check-label"
-              :for="'flexCheck_' + typology.name_typology"
-            >
+      <div class="wrapper d-flex flex-column">
+        <ul class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+          <div v-for="typology in typologies"
+            class="form-check border border-primary rounded-2 px-4 text-center d-flex align-items-center">
+            <input class="form-check-input ms-1" type="checkbox" :value="typology.name_typology"
+              :id="'flexCheck_' + typology.name_typology" @click="() => onSelect(typology)" />
+            <label class="form-check-label p-2" :for="'flexCheck_' + typology.name_typology">
               {{ typology.name_typology }}
             </label>
           </div>
-          <button>
-            <router-link
-              :to="{ path: '/restaurants', query: { typologies: stringItems } }"
-              class="nav-link"
-              >Vai ai ristoranti</router-link
-            >
-          </button>
           <!-- <router-link :to="'/restaurants/' + stringItems" class="nav-link">Vai ai ristoranti</router-link> -->
 
           <!-- <li v-for="typology in typologies" class="btn border rounded-pill mx-2"><router-link
                             :to="'/' + typology.name_typology" class="nav-link">{{ typology.name_typology }}</router-link>
                     </li> -->
         </ul>
+        <button class="btn btn-primary text-center">
+          <router-link :to="{ path: '/restaurants', query: { typologies: stringItems } }" class="nav-link">Vai ai
+            ristoranti</router-link>
+        </button>
         <div class="container py-5">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <div v-for="restaurant in allRestaurants" class="col">
-                <router-link :to="{name: 'restaurant', params: {id:restaurant.id}}">
-                    <div class="card h-100">
-                      <img
-                        class="card-img-top restaurant_images"
-                        :src="restaurant.cover_image"
-                        alt="Title"
-                      />
-                      <div class="card-body">
-                        <h4 class="card-title">{{ restaurant.name }}</h4>
-                        <p
-                          v-for="typology in restaurant.typologies"
-                          class="card-text"
-                        >
-                          {{ typology.name_typology }}
-                        </p>
-                      </div>
-                    </div>
-                </router-link>
+              <router-link :to="{ name: 'restaurant', params: { id: restaurant.id } }">
+                <div class="card h-100">
+                  <img class="card-img-top restaurant_images" :src="restaurant.cover_image" alt="Title" />
+                  <div class="card-body">
+                    <h4 class="card-title">{{ restaurant.name }}</h4>
+                    <p v-for="typology in restaurant.typologies" class="card-text">
+                      {{ typology.name_typology }}
+                    </p>
+                  </div>
+                </div>
+              </router-link>
             </div>
           </div>
         </div>
@@ -166,23 +130,14 @@ export default {
             </p>
             <!-- HTML !-->
             <button class="bn632-hover bn21" role="button">
-              <router-link
-                :to="{
-                  path: '/cart',
-                  query: { typologies: stringItems },
-                }"
-                class="nav-link"
-                >Ordina adesso!</router-link
-              >
+              <router-link :to="{
+                path: '/cart',
+                query: { typologies: stringItems },
+              }" class="nav-link">Ordina adesso!</router-link>
             </button>
           </div>
           <div class="col-6 align-self-end map p-0">
-            <img
-              class="img-fluid"
-              src="../assets/img/moncalvo.png"
-              alt=""
-              srcset=""
-            />
+            <img class="img-fluid" src="../assets/img/moncalvo.png" alt="" srcset="" />
           </div>
         </div>
       </div>
@@ -259,13 +214,11 @@ export default {
   }
 
   .bn632-hover.bn21 {
-    background-image: linear-gradient(
-      to right,
-      #fc6076,
-      #ff9a44,
-      #ef9d43,
-      #e75516
-    );
+    background-image: linear-gradient(to right,
+        #fc6076,
+        #ff9a44,
+        #ef9d43,
+        #e75516);
     box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
   }
 }
