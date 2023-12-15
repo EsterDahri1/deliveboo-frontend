@@ -92,8 +92,8 @@ export default {
       </div>
 
       <div class="container d-flex justify-content-center mt-3 gap-4">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 m-4">
-          <div class="card shadow border-0 w-50 h-25 card_hover" v-for="product in restaurant.products">
+        <div class="row justify-content-center row-cols-1 gap-4 row-cols-sm-2 row-cols-md-4 m-4">
+          <div class="card shadow w-25 border-0 card_hover" v-for="product in restaurant.products">
             <img :src="`http://localhost:8000/storage/${product.cover_image}`"
               style="object-fit: cover; width: 100%; height: 50%;" class="card-img-top" alt="..." height="400px">
             <h3 class="card-text text-center py-2 bg_menu_restaurant text-white">{{ product.name }}</h3>
