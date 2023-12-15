@@ -151,6 +151,10 @@ export default {
 <style lang="scss" scoped>
 @use "../assets/scss/partials/variables" as *;
 
+a {
+  text-decoration: none;
+}
+
 .body {
   background-color: $del_light;
 

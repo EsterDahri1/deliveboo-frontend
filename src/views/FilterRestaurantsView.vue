@@ -52,10 +52,11 @@ export default {
 
                             console.log(restaurant.typologies);
 
-                            if (restaurant.typologies.length === this.selectedTypologies.length) {
+                            return restaurant.typologies.some(typology => typology.name_typology === singleTypology)
+                            // se si vuole filtrare esclusivamente in base alla tipologia specifica, mettere il return nella condizione
+                            // if (restaurant.typologies.length === this.selectedTypologies.length) {
                                 
-                                return restaurant.typologies.some(typology => typology.name_typology === singleTypology)
-                            }
+                            // }
                             
 
                         });
