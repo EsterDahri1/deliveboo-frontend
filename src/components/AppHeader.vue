@@ -57,7 +57,7 @@ export default {
                   <!-- <a class="nav-link" href="#">Cart <i class="fa-solid fa-cart-shopping"></i></a> -->
                   <router-link to="/cart" class="nav-link"><i
                       class="fa-solid fa-cart-shopping position-relative fa-xl"></i> <span v-if="store.cart.length > 0"
-                      class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.cart.length
+                      class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.totalCartQuantity
                       }}
                       <span class="visually-hidden">unread messages</span>
                     </span></router-link>

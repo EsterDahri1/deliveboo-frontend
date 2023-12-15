@@ -41,6 +41,7 @@ export default {
       store.totalPrice = JSON.parse(store.savedTotal);
     }
   },
+  
 };
 </script>
 

@@ -6,11 +6,23 @@ import { RouterView } from 'vue-router';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      cart: [],
+    }
+  },
   components: {
     AppHeader,
     AppFooter,
     RouterView
+  },
+  methods: {
+    catchCart(product){
+      this.cart.push(product)
+      console.log(this.cart);
+    }
   }
+
 }
 </script>
 
@@ -18,7 +30,7 @@ export default {
   <AppHeader />
 
   <main>
-    <router-view></router-view>
+    <router-view @handleCart="catchCart"></router-view>
   </main>
 
   <AppFooter />
