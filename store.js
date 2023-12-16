@@ -21,21 +21,10 @@ export const store = reactive({
 
     // Aggiorna il totale del carrello e il prezzo totale
     updateCartTotal() {
-        this.totalPrice = this.cart.reduce(
-            (total, product) => total + product.price * product.quantity,
-            0,
-            // this.cart.forEach(singleCart => {
-            //     console.log(singleCart.quantity);
-            //     this.singleCart.push(singleCart.quantity)
-            // }),
-
-            // (product)=> this.totalProducts = this.totalItem + product.quantity,
-
-
-            // console.log(this.totalProducts),
-            // console.log(this.singleCart),
-        );
+        // con reduce sottraggo tutti i numeri in un array(this.cart) e li riduco a un unico numero
+        this.totalPrice = this.cart.reduce((total, product) => total + product.price * product.quantity, 0);
+        this.totalItem = this.cart.reduce((total, product) => total + product.quantity, 0);
         this.saveTotalPrice();
-    },
-   
+    }
+
 });

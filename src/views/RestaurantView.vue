@@ -38,7 +38,7 @@ export default {
         }
 
       }
-      this.store.totalItem ++
+      // this.store.totalItem ++
 
       console.log(this.store.singleCart);
       const existingProduct = store.cart.find(
