@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 import { store } from '../../store';
 export default {
   name: "CartView",
@@ -9,41 +8,45 @@ export default {
     };
   },
   methods: {
+    // Elimina un prodotto dal carrello
     deleteCartProduct(product) {
-      const index = store.cart.indexOf(product);
+      const index = this.store.cart.findIndex(p => p.id === product.id);
       if (index !== -1) {
-        store.cart.splice(index, 1);
+        this.store.cart.splice(index, 1);
         this.updateTotalPrice();
-        store.saveCartToLocalStorage();
+        this.store.saveCartToLocalStorage();
       }
     },
 
+    // Aggiorna la quantità di un prodotto
     updateQuantity(product) {
       if (product && product.quantity > 0) {
         product.productTotalPrice = product.price * product.quantity;
         this.updateTotalPrice();
-        store.saveCartToLocalStorage();
+        this.store.saveCartToLocalStorage();
       }
     },
+
+    // Aggiorna il prezzo totale
     updateTotalPrice() {
-      store.totalPrice = store.cart.reduce(
+      this.store.totalPrice = this.store.cart.reduce(
         (total, product) => total + product.productTotalPrice,
         0
       );
-      store.saveTotalPrice();
+      this.store.saveTotalPrice();
     },
   },
   mounted() {
-    if (store.savedCart) {
-      store.cart = JSON.parse(store.savedCart);
+    if (this.store.savedCart) {
+      this.store.cart = this.store.savedCart;
     }
-    if (store.savedTotal) {
-      store.totalPrice = JSON.parse(store.savedTotal);
+    if (this.store.savedTotal) {
+      this.store.totalPrice = this.store.savedTotal;
     }
   },
-  
 };
 </script>
+
 
 <template>
   <div class="app">

@@ -1,32 +1,48 @@
 <script>
 import { store } from '../../store';
-import axios from 'axios';
 export default {
   name: "AppHeader",
   data() {
     return {
       store,
+      cartNumber: 0,
     };
   },
   methods: {
+    // Aggiorna la quantità di un prodotto
     updateQuantity(product) {
       if (product && product.quantity > 0) {
         product.productTotalPrice = product.price * product.quantity;
         this.updateTotalPrice();
-        store.saveCartToLocalStorage();
+        this.store.saveCartToLocalStorage();
       }
+    },
+    // Aggiorna il prezzo totale
+    updateTotalPrice() {
+      this.store.totalPrice = this.store.cart.reduce(
+        (total, product) => total + product.productTotalPrice,
+        0
+      );
+      this.store.saveTotalPrice();
     },
   },
   mounted() {
-    if (store.savedCart) {
-      store.cart = JSON.parse(store.savedCart);
+    // console.log(store.cart);
+    if (this.store.savedCart) {
+      this.store.cart = this.store.savedCart;
     }
-    if (store.savedTotal) {
-      store.totalPrice = JSON.parse(store.savedTotal);
+    if (this.store.savedTotal) {
+      this.store.totalPrice = this.store.savedTotal;
     }
+
+    store.cart.forEach(product => {
+      this.cartNumber = product.quantity
+    });
+    console.log(this.cartNumber);
   },
 };
 </script>
+
 
 <template>
   <header class="bg_header_footer">

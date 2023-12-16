@@ -17,10 +17,10 @@ export default {
     RouterView
   },
   methods: {
-    catchCart(product){
-      this.cart.push(product)
-      console.log(this.cart);
-    }
+    // catchCart(product){
+    //   this.cart.push(product)
+    //   console.log(this.cart);
+    // }
   }
 
 }
@@ -30,7 +30,7 @@ export default {
   <AppHeader />
 
   <main>
-    <router-view @handleCart="catchCart"></router-view>
+    <router-view></router-view>
   </main>
 
   <AppFooter />
