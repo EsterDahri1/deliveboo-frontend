@@ -4,8 +4,13 @@ export const store = reactive({
     cart: JSON.parse(localStorage.getItem("storageCart")) || [],
     totalPrice: JSON.parse(localStorage.getItem("storageTotalPrice")) || 0,
     singleCart: [],
-    totalItem: 0,
-    // totalProducts: '',
+    // me lo trasforma in json o 0
+    totalItem: JSON.parse(localStorage.getItem("storageTotalItem")) || 0,
+
+    // Salva totalItem nel localStorage
+    saveTotalItemToLocalStorage() {
+        localStorage.setItem("storageTotalItem", JSON.stringify(this.totalItem));
+    },
 
     // Salva il carrello nel localStorage
     saveCartToLocalStorage() {
@@ -21,10 +26,10 @@ export const store = reactive({
 
     // Aggiorna il totale del carrello e il prezzo totale
     updateCartTotal() {
-        // con reduce sottraggo tutti i numeri in un array(this.cart) e li riduco a un unico numero
         this.totalPrice = this.cart.reduce((total, product) => total + product.price * product.quantity, 0);
         this.totalItem = this.cart.reduce((total, product) => total + product.quantity, 0);
         this.saveTotalPrice();
-    }
+        this.saveTotalItemToLocalStorage();
+    },
 
 });
