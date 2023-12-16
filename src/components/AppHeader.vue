@@ -35,11 +35,14 @@ export default {
       this.store.totalPrice = this.store.savedTotal;
     }
 
-    store.cart.forEach(product => {
-      this.cartNumber = product.quantity
-    });
-    console.log(this.cartNumber);
+    // store.cart.forEach(product => {
+    //   this.cartNumber = product.quantity
+    // });
+    console.log(this.store.cart);
+
   },
+  
+  
 };
 </script>
 
@@ -73,7 +76,7 @@ export default {
                   <!-- <a class="nav-link" href="#">Cart <i class="fa-solid fa-cart-shopping"></i></a> -->
                   <router-link to="/cart" class="nav-link"><i
                       class="fa-solid fa-cart-shopping position-relative fa-xl"></i> <span v-if="store.cart.length > 0"
-                      class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.totalCartQuantity
+                      class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.cart.length
                       }}
                       <span class="visually-hidden">unread messages</span>
                     </span></router-link>
@@ -92,9 +95,6 @@ export default {
     </div>
   </header>
 
-  <!-- <script src="path/to/bootstrap.bundle.min.js"></script> -->
-  <!-- ☝ gpt dice di aggiungere questo tag per visualizzare gli item del menu burger 
-        inserendolo mi da errore non riesco a cpire dove inserirlo  -->
 </template>
 
 <style scoped lang="scss">

@@ -25,6 +25,7 @@ export default {
         this.updateTotalPrice();
         this.store.saveCartToLocalStorage();
       }
+      // this.store.totalItem++
     },
 
     // Aggiorna il prezzo totale
@@ -69,6 +70,11 @@ export default {
             <li>
               <input type="number" class="form-control" v-model="cartProduct.quantity" min="1" placeholder=""
                 @input="updateQuantity(cartProduct)" />
+              <!-- <div class="input-group mb-3">
+                <span class="input-group-text" @click="updateQuantity(cartProduct)">+</span>
+                <input @input="updateQuantity(cartProduct)" width="100px" type="text" v-model="cartProduct.quantity" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">-</span>
+              </div> -->
             </li>
           </ul>
         </div>

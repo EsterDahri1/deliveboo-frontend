@@ -38,8 +38,9 @@ export default {
         }
 
       }
+      this.store.totalItem ++
 
-      console.log(this.alert);
+      console.log(this.store.singleCart);
       const existingProduct = store.cart.find(
         (productCart) => productCart.id === product.id
       );
