@@ -13,10 +13,12 @@ export default {
       <div class="top p-3">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3 mt-3">
           <div class="col">
-            <div class="about card p-4 border-0 shadow h-100 rounded-4">
-              <h4 class="">Scopri la nostra App</h4>
+            <div class="about text-light p-4 border-0 h-100 rounded-4">
+              <h4>Scopri la nostra App</h4>
               <ul>
-                <li class="text-start"><a href="#">Investitori</a></li>
+                <li class="text-start">
+                  <a href="#">Investitori</a>
+                </li>
                 <li class="nav-item">
                   <router-link to="/about" class="nav-link"
                     >Chi siamo</router-link
@@ -39,8 +41,8 @@ export default {
             </div>
           </div>
           <div class="col">
-            <div class="notes card p-4 border-0 shadow h-100 rounded-4">
-              <h4 class="">Note legali</h4>
+            <div class="notes p-4 border-0 h-100 rounded-4">
+              <h4 class="text-light">Note legali</h4>
               <ul>
                 <li class="text-start"><a href="#">Termini & Condizioni</a></li>
                 <li class="text-start">
@@ -54,8 +56,8 @@ export default {
             </div>
           </div>
           <div class="col">
-            <div class="aiuto rounded card p-4 border-0 shadow h-100 rounded-4">
-              <h4 class="">Aiuto</h4>
+            <div class="aiuto rounded p-4 border-0 h-100 rounded-4">
+              <h4 class="text-light">Aiuto</h4>
               <ul>
                 <li><a href="#">Contatti</a></li>
                 <li><a href="#">FAQ</a></li>
@@ -113,22 +115,22 @@ export default {
 }
 
 .top {
-  .card:hover {
-    transform: translate3D(0, -1px, 0) scale(1.03);
-  }
+  // .card:hover {
+  //   transform: translate3D(0, -1px, 0) scale(1.03);
+  // }
 
   .card {
     background-color: #ffffffa9;
   }
 
-  a {
-    color: $del_black;
+  li > a {
     font-size: 15px;
     text-decoration: none;
+    color: white;
   }
 
   a:hover {
-    color: $del_danger;
+    text-decoration: underline;
   }
 
   a:focus {
@@ -154,10 +156,6 @@ export default {
     a {
       color: $del_light;
       text-decoration: none;
-    }
-
-    a:hover {
-      font-size: larger;
     }
   }
 
