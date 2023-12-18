@@ -51,97 +51,41 @@ export default {
 
 <template>
   <div class="app">
-    <div class="container my-5 border-2 rounded-1 shadow p-5">
-      <h1>Il riepilogo dell'ordine:</h1>
-      <h3>nome ristorante:</h3>
-      <div class="row mt-3">
-        <div class="col-2" v-for="cartProduct in store.cart">
-          <ul>
-            <li>{{ cartProduct.name }}</li>
-          </ul>
-        </div>
-        <div class="col-2" v-for="cartProduct in store.cart">
-          <button class="btn btn-danger" @click="deleteCartProduct(cartProduct)">
-            Rimuovi
-          </button>
-        </div>
-        <div class="col-2" v-for="cartProduct in store.cart">
-          <ul class="no_decoration">
-            <li>
-              <input type="number" class="form-control" v-model="cartProduct.quantity" min="1" placeholder=""
-                @input="updateQuantity(cartProduct)" />
-              <!-- <div class="input-group mb-3">
-                <span class="input-group-text" @click="updateQuantity(cartProduct)">+</span>
-                <input @input="updateQuantity(cartProduct)" width="100px" type="text" v-model="cartProduct.quantity" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <span class="input-group-text">-</span>
-              </div> -->
-            </li>
-          </ul>
-        </div>
-        <div class="col-6 text-center" v-for="cartProduct in store.cart">
-          <ul class="no_decoration">
-            <li> Prezzo Unitario: € {{ cartProduct.price }}</li>
-          </ul>
-        </div>
+  <div class="container w-75 my-5 border-2 rounded-1 p-5 d-flex flex-column">
+    <div class="d-flex justify-content-center align-content-center">
+      <h1 style="color: #F18701;" class="text-center">Riepilogo dell'ordine</h1>
+      <img src="../assets/img/logosfondo.png" alt="" style="width: 10%; filter: drop-shadow(0 0 0.1rem #F18701); margin-left: -4%; margin-top: 1%; transform: rotate(30deg); object-fit: cover;">
+    </div>
+    <h5 style="color: #729EF5;" class="text-center pt-2">nomeRistorante</h5>
+    <div class="row mt-5 gap-4 align-content-center shadow p-4 mb-3 rounded-5 flex-wrap">
+      <small class="mb-5 fw-bold">i tuoi articoli</small>
+      <div class="col-2 border_card d-flex flex-column justify-content-between" v-for="cartProduct in store.cart">
+        <div class="fw-medium">{{ cartProduct.name }}</div>
+        <small class="fw-lighter">Quantità</small>
+        <input type="number" class="form-control" v-model="cartProduct.quantity" min="1" placeholder=""
+         @input="updateQuantity(cartProduct)" />
+        <small class="fw-lighter">Prezzo Unitario:{{ cartProduct.price }}€</small>
+        <button class="btn btn-danger mt-5 card-img-bottom" @click="deleteCartProduct(cartProduct)">
+          Rimuovi
+        </button>
       </div>
-
-      <hr />
-      <div class="row mt-4">
-        <div class="col-8">
-          <h3>TOTALE:</h3>
-        </div>
-        <div class="col-4 d-flex justify-content-between">
-          <span>€ {{ store.totalPrice }}</span>
-          <button class="button">
-            <router-link to="/Payment" class="button__text text-light text-decoration-none">
-              <span> <span>P</span><span>a</span>g</span><span> </span><span>a</span>
-            </router-link>
-
-            <svg class="button__svg" role="presentational" viewBox="0 0 600 600">
-              <defs>
-                <clipPath id="myClip">
-                  <rect x="0" y="0" width="100%" height="50%" />
-                </clipPath>
-              </defs>
-              <g clip-path="url(#myClip)">
-                <g id="money">
-                  <path
-                    d="M441.9,116.54h-162c-4.66,0-8.49,4.34-8.62,9.83l.85,278.17,178.37,2V126.37C450.38,120.89,446.56,116.52,441.9,116.54Z"
-                    fill="#699e64" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
-                  <path
-                    d="M424.73,165.49c-10-2.53-17.38-12-17.68-24H316.44c-.09,11.58-7,21.53-16.62,23.94-3.24.92-5.54,4.29-5.62,8.21V376.54H430.1V173.71C430.15,169.83,427.93,166.43,424.73,165.49Z"
-                    fill="#699e64" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
-                </g>
-                <g id="creditcard">
-                  <path
-                    d="M372.12,181.59H210.9c-4.64,0-8.45,4.34-8.58,9.83l.85,278.17,177.49,2V191.42C380.55,185.94,376.75,181.57,372.12,181.59Z"
-                    fill="#a76fe2" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
-                  <path
-                    d="M347.55,261.85H332.22c-3.73,0-6.76-3.58-6.76-8v-35.2c0-4.42,3-8,6.76-8h15.33c3.73,0,6.76,3.58,6.76,8v35.2C354.31,258.27,351.28,261.85,347.55,261.85Z"
-                    fill="#ffdc67" />
-                  <path d="M249.73,183.76h28.85v274.8H249.73Z" fill="#323c44" />
-                </g>
-              </g>
-              <g id="wallet">
-                <path
-                  d="M478,288.23h-337A28.93,28.93,0,0,0,112,317.14V546.2a29,29,0,0,0,28.94,28.95H478a29,29,0,0,0,28.95-28.94h0v-229A29,29,0,0,0,478,288.23Z"
-                  fill="#a4bdc1" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
-                <path
-                  d="M512.83,382.71H416.71a28.93,28.93,0,0,0-28.95,28.94h0V467.8a29,29,0,0,0,28.95,28.95h96.12a19.31,19.31,0,0,0,19.3-19.3V402a19.3,19.3,0,0,0-19.3-19.3Z"
-                  fill="#a4bdc1" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
-                <path d="M451.46,435.79v7.88a14.48,14.48,0,1,1-29,0v-7.9a14.48,14.48,0,0,1,29,0Z" fill="#a4bdc1"
-                  stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
-                <path
-                  d="M147.87,541.93V320.84c-.05-13.2,8.25-21.51,21.62-24.27a42.71,42.71,0,0,1,7.14-1.32l-29.36-.63a67.77,67.77,0,0,0-9.13.45c-13.37,2.75-20.32,12.57-20.27,25.77l.38,221.24c-1.57,15.44,8.15,27.08,25.34,26.1l33-.19c-15.9,0-28.78-10.58-28.76-25.93Z"
-                  fill="#7b8f91" />
-                <path d="M148.16,343.22a6,6,0,0,0-6,6v92a6,6,0,0,0,12,0v-92A6,6,0,0,0,148.16,343.22Z" fill="#323c44" />
-              </g>
-            </svg>
-          </button>
-        </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-8">
+        <h3>TOTALE :</h3>
+      </div>
+      <div class="col-4 d-flex justify-content-between">
+        <span class="fs-4 fw-medium">{{ store.totalPrice }} €</span>
+        <button class="btn btn_color rounded-end-pill">
+          <router-link to="/Payment" class="button__text text-light text-decoration-none">
+            <!-- <span> <span>P</span><span>a</span>g</span><span> </span><span>a</span> -->
+            <small class="fst-italic">Paga adesso</small>
+          </router-link>
+        </button>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <style lang="scss" scoped>
@@ -190,6 +134,17 @@ export default {
 .button:hover .button__text span {
   transform: translateY(-0.25rem);
   transition: transform 0.2s ease-in-out;
+}
+.border_card{
+  border: 1px solid #F35B04;
+  padding: 1%;
+  border-radius: 5%;
+}
+.btn_color{
+  background-color: #F7B801;
+}
+.btn_color:hover{
+  background-color: #F35B04;
 }
 
 /* styling */
