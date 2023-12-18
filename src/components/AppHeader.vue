@@ -1,32 +1,51 @@
 <script>
 import { store } from '../../store';
-import axios from 'axios';
 export default {
   name: "AppHeader",
   data() {
     return {
       store,
+      cartNumber: 0,
     };
   },
   methods: {
+    // Aggiorna la quantità di un prodotto
     updateQuantity(product) {
       if (product && product.quantity > 0) {
         product.productTotalPrice = product.price * product.quantity;
         this.updateTotalPrice();
-        store.saveCartToLocalStorage();
+        this.store.saveCartToLocalStorage();
       }
+    },
+    // Aggiorna il prezzo totale
+    updateTotalPrice() {
+      this.store.totalPrice = this.store.cart.reduce(
+        (total, product) => total + product.productTotalPrice,
+        0
+      );
+      this.store.saveTotalPrice();
     },
   },
   mounted() {
-    if (store.savedCart) {
-      store.cart = JSON.parse(store.savedCart);
+    // console.log(store.cart);
+    if (this.store.savedCart) {
+      this.store.cart = this.store.savedCart;
     }
-    if (store.savedTotal) {
-      store.totalPrice = JSON.parse(store.savedTotal);
+    if (this.store.savedTotal) {
+      this.store.totalPrice = this.store.savedTotal;
     }
+
+    // store.cart.forEach(product => {
+    //   this.cartNumber = product.quantity
+    // });
+    console.log(this.store.cart);
+
   },
+  
+  
 };
 </script>
+
 
 <template>
   <header class="bg_header_footer">
@@ -57,7 +76,7 @@ export default {
                   <!-- <a class="nav-link" href="#">Cart <i class="fa-solid fa-cart-shopping"></i></a> -->
                   <router-link to="/cart" class="nav-link"><i
                       class="fa-solid fa-cart-shopping position-relative fa-xl"></i> <span v-if="store.cart.length > 0"
-                      class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.totalCartQuantity
+                      class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.totalItem
                       }}
                       <span class="visually-hidden">unread messages</span>
                     </span></router-link>
@@ -76,9 +95,6 @@ export default {
     </div>
   </header>
 
-  <!-- <script src="path/to/bootstrap.bundle.min.js"></script> -->
-  <!-- ☝ gpt dice di aggiungere questo tag per visualizzare gli item del menu burger 
-        inserendolo mi da errore non riesco a cpire dove inserirlo  -->
 </template>
 
 <style scoped lang="scss">

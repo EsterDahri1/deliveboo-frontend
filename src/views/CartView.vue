@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 import { store } from '../../store';
 export default {
   name: "CartView",
@@ -9,41 +8,46 @@ export default {
     };
   },
   methods: {
+    // Elimina un prodotto dal carrello
     deleteCartProduct(product) {
-      const index = store.cart.indexOf(product);
+      const index = this.store.cart.findIndex(p => p.id === product.id);
       if (index !== -1) {
-        store.cart.splice(index, 1);
+        this.store.cart.splice(index, 1);
         this.updateTotalPrice();
-        store.saveCartToLocalStorage();
+        this.store.saveCartToLocalStorage();
       }
     },
 
+    // Aggiorna la quantità di un prodotto
     updateQuantity(product) {
       if (product && product.quantity > 0) {
         product.productTotalPrice = product.price * product.quantity;
         this.updateTotalPrice();
-        store.saveCartToLocalStorage();
+        this.store.saveCartToLocalStorage();
       }
+      // this.store.totalItem++
     },
+
+    // Aggiorna il prezzo totale
     updateTotalPrice() {
-      store.totalPrice = store.cart.reduce(
+      this.store.totalPrice = this.store.cart.reduce(
         (total, product) => total + product.productTotalPrice,
         0
       );
-      store.saveTotalPrice();
+      this.store.saveTotalPrice();
     },
   },
   mounted() {
-    if (store.savedCart) {
-      store.cart = JSON.parse(store.savedCart);
+    if (this.store.savedCart) {
+      this.store.cart = this.store.savedCart;
     }
-    if (store.savedTotal) {
-      store.totalPrice = JSON.parse(store.savedTotal);
+    if (this.store.savedTotal) {
+      this.store.totalPrice = this.store.savedTotal;
     }
   },
-  
 };
 </script>
+
 
 <template>
   <div class="app">
@@ -56,33 +60,30 @@ export default {
               style="width: 10%; filter: drop-shadow(0 0 0.1rem #F18701); margin-left: -4%; margin-top: 1%; transform: rotate(30deg); object-fit: cover;">
           </div>
         </div>
-        <div class="top">
-          <div class="table-responsive">
-            <table class="table table-warning">
-              <thead>
-                <tr>
-                  <th scope="col">Prodotto</th>
-                  <th scope="col">Quantità</th>
-                  <th scope="col">Rimuovi</th>
-                  <th scope="col">Prezzo unitario</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="" v-for="cartProduct in store.cart">
-                  <td scope="row">{{ cartProduct.name }}</td>
-                  <td><input type="number" class="form-control" v-model="cartProduct.quantity" min="1" placeholder=""
-                      @input="updateQuantity(cartProduct)" /></td>
-                  <td>
-                    <button class="btn btn-danger" @click="deleteCartProduct(cartProduct)">
-                      Rimuovi
-                    </button>
-                  </td>
-                  <td>{{ cartProduct.price }} €</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+        <div class="col-2" v-for="cartProduct in store.cart">
+          <button class="btn btn-danger" @click="deleteCartProduct(cartProduct)">
+            Rimuovi
+          </button>
+        </div>
+        <div class="col-2" v-for="cartProduct in store.cart">
+          <ul class="no_decoration">
+            <li>
+              <input type="number" class="form-control" v-model="cartProduct.quantity" min="1" placeholder=""
+                @input="updateQuantity(cartProduct)" />
+              <!-- <div class="input-group mb-3">
+                <span class="input-group-text" @click="updateQuantity(cartProduct)">+</span>
+                <input @input="updateQuantity(cartProduct)" width="100px" type="text" v-model="cartProduct.quantity" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">-</span>
+              </div> -->
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 text-center" v-for="cartProduct in store.cart">
+          <ul class="no_decoration">
+            <li> Prezzo Unitario: € {{ cartProduct.price }}</li>
+          </ul>
+        </div>
+      </div>
         </div>
         <div class="bottom">
           <div class="row">
