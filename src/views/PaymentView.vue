@@ -154,7 +154,5 @@ export default {
 </template>
 
 <style>
-body {
-    padding: 20px;
-}
+
 </style>
