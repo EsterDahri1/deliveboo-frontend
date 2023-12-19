@@ -80,21 +80,26 @@ export default {
   <div class="app">
     <body>
       <div class="img_container">
-        <div v-if="restaurant.cover_image !== ''"
+        <div
+          v-if="restaurant.cover_image !== ''"
           class="bg_banner w-100"
           v-bind:style="{ backgroundImage: `url(${restaurant.cover_image})` }"
           style="background-repeat: no-repeat; background-size: cover"
           alt=""
         ></div>
-        <div v-else
+        <div
+          v-else
           class="bg_banner w-100"
-          style="background-repeat: no-repeat; background-image: url('https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg'); background-size: cover"
+          style="
+            background-repeat: no-repeat;
+            background-image: url('https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg');
+            background-size: cover;
+          "
           alt=""
         ></div>
 
-
         <div class="mt-n5 menu_restaurant">
-          <div class="container menu mb-5">
+          <div class="container menu pb-5">
             <div class="card w-75 m-auto menu-items shadow">
               <div class="card-header fs-2 text-center">
                 "{{ restaurant.name }}"
@@ -188,11 +193,8 @@ export default {
 }
 
 .menu {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -35%;
   margin: auto;
+  margin-top: -170px;
 }
 
 body {
@@ -208,9 +210,7 @@ body {
 // }
 
 .menu_restaurant {
-  position: relative;
   margin: auto;
-  height: 80vh;
 }
 
 .bg_choice {
