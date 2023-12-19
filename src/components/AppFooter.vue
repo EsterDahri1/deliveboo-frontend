@@ -66,8 +66,8 @@ export default {
             </div>
           </div>
           <div class="col">
-            <div class="help card p-4 border-0 shadow h-100 rounded-4">
-              <h4 class="">Scarica la nostra App</h4>
+            <div class="help p-4 border-0 h-100 rounded-4">
+              <h4 class="text-light mb-3">Scarica la nostra App</h4>
               <div class="d-flex flex-column gap-3 py-2">
                 <a
                   href="https://www.apple.com/it/app-store/"
@@ -112,6 +112,10 @@ export default {
 
 .bg_header_footer {
   background-color: $del_danger;
+}
+
+.footer {
+  height: 55vh;
 }
 
 .top {
