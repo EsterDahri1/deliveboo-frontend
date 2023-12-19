@@ -236,6 +236,7 @@ a {
 }
 .body {
   background-color: $del_light;
+  overflow-x: hidden;
 
   .wrapper {
     margin: auto;
@@ -252,6 +253,9 @@ a {
     }
   }
 
+  // .col-2 {
+  //   scroll-behavior: smooth;
+  // }
   .restaurant_images {
     object-fit: cover;
     aspect-ratio: 1 / 1;

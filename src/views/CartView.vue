@@ -1,5 +1,5 @@
 <script>
-import { store } from '../../store';
+import { store } from "../../store";
 export default {
   name: "CartView",
   data() {
@@ -10,7 +10,7 @@ export default {
   methods: {
     // Elimina un prodotto dal carrello
     deleteCartProduct(product) {
-      const index = this.store.cart.findIndex(p => p.id === product.id);
+      const index = this.store.cart.findIndex((p) => p.id === product.id);
       if (index !== -1) {
         this.store.cart.splice(index, 1);
         this.updateTotalPrice();
@@ -48,44 +48,75 @@ export default {
 };
 </script>
 
-
 <template>
   <div class="app">
-  <div class="container w-75 my-5 border-2 rounded-1 p-5 d-flex flex-column">
-    <div class="d-flex justify-content-center align-content-center">
-      <h1 style="color: #F18701;" class="text-center">Riepilogo dell'ordine</h1>
-      <img src="../assets/img/logosfondo.png" alt="" style="width: 10%; filter: drop-shadow(0 0 0.1rem #F18701); margin-left: -4%; margin-top: 1%; transform: rotate(30deg); object-fit: cover;">
-    </div>
-    <h5 style="color: #729EF5;" class="text-center pt-2">nomeRistorante</h5>
-    <div class="row mt-5 gap-4 align-content-center shadow p-4 mb-3 rounded-5 flex-wrap">
-      <small class="mb-5 fw-bold">i tuoi articoli</small>
-      <div class="col-2 border_card d-flex flex-column justify-content-between" v-for="cartProduct in store.cart">
-        <div class="fw-medium">{{ cartProduct.name }}</div>
-        <small class="fw-lighter">Quantità</small>
-        <input type="number" class="form-control" v-model="cartProduct.quantity" min="1" placeholder=""
-         @input="updateQuantity(cartProduct)" />
-        <small class="fw-lighter">Prezzo Unitario:{{ cartProduct.price }}€</small>
-        <button class="btn btn-danger mt-5 card-img-bottom" @click="deleteCartProduct(cartProduct)">
-          Rimuovi
-        </button>
+    <div class="container w-75 my-5 border-2 rounded-1 p-5 d-flex flex-column">
+      <div class="d-flex justify-content-center align-content-center">
+        <h1 style="color: #f18701" class="text-center">
+          Riepilogo dell'ordine
+        </h1>
+        <img
+          src="../assets/img/logosfondo.png"
+          alt=""
+          style="
+            width: 10%;
+            filter: drop-shadow(0 0 0.1rem #f18701);
+            margin-left: -4%;
+            margin-top: 1%;
+            transform: rotate(30deg);
+            object-fit: cover;
+          "
+        />
       </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-8">
-        <h3>TOTALE :</h3>
+
+      <div
+        class="row mt-5 gap-4 align-content-center shadow p-4 mb-3 rounded-5 flex-wrap"
+      >
+        <h3 class="mb-5 fw-bold">I tuoi articoli:</h3>
+        <div
+          class="col-2 border_card d-flex flex-column justify-content-between"
+          v-for="cartProduct in store.cart"
+        >
+          <div class="fw-medium">{{ cartProduct.name }}</div>
+          <small class="fw-lighter">Quantità</small>
+          <input
+            type="number"
+            class="form-control"
+            v-model="cartProduct.quantity"
+            min="1"
+            placeholder=""
+            @input="updateQuantity(cartProduct)"
+          />
+          <small class="fw-lighter"
+            >Prezzo Unitario:{{ cartProduct.price }}€</small
+          >
+          <button
+            class="btn btn-danger mt-5 card-img-bottom"
+            @click="deleteCartProduct(cartProduct)"
+          >
+            Rimuovi
+          </button>
+        </div>
       </div>
-      <div class="col-4 d-flex justify-content-between">
-        <span class="fs-4 fw-medium">{{ store.totalPrice }} €</span>
-        <button class="btn btn_color rounded-end-pill">
-          <router-link to="/Payment" class="button__text text-light text-decoration-none">
-            <!-- <span> <span>P</span><span>a</span>g</span><span> </span><span>a</span> -->
-            <small class="fst-italic">Paga adesso</small>
-          </router-link>
-        </button>
+      <div class="row mt-4">
+        <div class="col-8">
+          <h3>TOTALE :</h3>
+        </div>
+        <div class="col-4 d-flex justify-content-between">
+          <span class="fs-4 fw-medium">{{ store.totalPrice }} €</span>
+          <button class="btn btn_color rounded-pill">
+            <router-link
+              to="/Payment"
+              class="button__text text-light text-decoration-none"
+            >
+              <!-- <span> <span>P</span><span>a</span>g</span><span> </span><span>a</span> -->
+              <small class="fw-bold">Paga adesso</small>
+            </router-link>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <style lang="scss" scoped>
@@ -135,16 +166,16 @@ export default {
   transform: translateY(-0.25rem);
   transition: transform 0.2s ease-in-out;
 }
-.border_card{
-  border: 1px solid #F35B04;
+.border_card {
+  border: 1px solid #f35b04;
   padding: 1%;
   border-radius: 5%;
 }
-.btn_color{
-  background-color: #F7B801;
+.btn_color {
+  background-color: #f7b801;
 }
-.btn_color:hover{
-  background-color: #F35B04;
+.btn_color:hover {
+  background-color: #f35b04;
 }
 
 /* styling */
