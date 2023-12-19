@@ -55,9 +55,9 @@ export default {
                             return restaurant.typologies.some(typology => typology.name_typology === singleTypology)
                             // se si vuole filtrare esclusivamente in base alla tipologia specifica, mettere il return nella condizione
                             // if (restaurant.typologies.length === this.selectedTypologies.length) {
-                                
+
                             // }
-                            
+
 
                         });
                     })
@@ -106,8 +106,8 @@ export default {
 
 <template>
     <div class="app">
-        <h1>ristoranti selezionati</h1>
         <div class="container py-5">
+            <h1>ristoranti selezionati</h1>
             <div class="d-flex">
 
 
@@ -116,7 +116,15 @@ export default {
 
                 <div v-for="restaurant in restaurants" class="col">
                     <div class="card h-100">
-                        <img class="card-img-top restaurant_images" src="https://picsum.photos/200/300" alt="Title" />
+                        <div v-if="(restaurant.cover_image == '')">
+                            <img style="width: 100%; aspect-ratio: 1 / 1;"
+                                src="https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg"
+                                alt="">
+                        </div>
+                        <div v-else>
+
+                            <img class="card-img-top restaurant_images" :src="restaurant.cover_image" alt="Title" />
+                        </div>
                         <div class="card-body">
                             <h4 class="card-title">{{ restaurant.name }}</h4>
                             <p v-for="typology in restaurant.typologies" class="card-text">{{ typology.name_typology }}</p>
