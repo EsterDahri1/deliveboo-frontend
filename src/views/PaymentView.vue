@@ -1,13 +1,14 @@
 <script>
 import braintree from 'braintree-web';
-import paypal from 'paypal-checkout';
+// import paypal from 'paypal-checkout';
+import { store } from '../../store';
 export default {
     data() {
         return {
             hostedFieldInstance: false,
             nonce: "",
             error: "",
-            amount: 10
+            amount: store.totalPrice
         }
     },
     methods: {
@@ -27,8 +28,10 @@ export default {
         }
     },
     mounted() {
+        console.log(store);
+
         braintree.client.create({
-            authorization: "sandbox_nd738s7v_g6wp59ymyyxrqw4w"
+            authorization: "sandbox_nd6bgb7z_bhcnjb7v5ps4kyg2"
         })
             .then(clientInstance => {
                 let options = {
@@ -56,49 +59,49 @@ export default {
                 }
                 return Promise.all([
                     braintree.hostedFields.create(options),
-                    braintree.paypalCheckout.create({ client: clientInstance })
+                    // braintree.paypalCheckout.create({ client: clientInstance })
                 ])
             })
             .then(instances => {
                 const hostedFieldInstance = instances[0];
-                const paypalCheckoutInstance = instances[1];
+                // const paypalCheckoutInstance = instances[1];
                 // Use hostedFieldInstance to send data to Braintree
                 this.hostedFieldInstance = hostedFieldInstance;
                 // Setup PayPal Button
-                return paypal.Button.render({
-                    env: 'sandbox',
-                    style: {
-                        label: 'paypal',
-                        size: 'responsive',
-                        shape: 'rect'
-                    },
-                    payment: () => {
-                        return paypalCheckoutInstance.createPayment({
-                            flow: 'checkout',
-                            intent: 'sale',
-                            amount: parseFloat(this.amount) > 0 ? this.amount : 10,
-                            displayName: 'Braintree Testing',
-                            currency: 'USD'
-                        })
-                    },
-                    onAuthorize: (data, options) => {
-                        return paypalCheckoutInstance.tokenizePayment(data).then(payload => {
-                            console.log(payload);
-                            this.error = "";
-                            this.nonce = payload.nonce;
-                        })
-                    },
-                    onCancel: (data) => {
-                        console.log(data);
-                        console.log("Payment Cancelled");
-                    },
-                    onError: (err) => {
-                        console.error(err);
-                        this.error = "An error occurred while processing the paypal payment.";
-                    }
-                }, '#paypalButton')
-            })
-            .catch(err => {
+    //             return paypal.Button.render({
+    //                 env: 'sandbox',
+    //                 style: {
+    //                     label: 'paypal',
+    //                     size: 'responsive',
+    //                     shape: 'rect'
+    //                 },
+    //                 payment: () => {
+    //                     return paypalCheckoutInstance.createPayment({
+    //                         flow: 'checkout',
+    //                         intent: 'sale',
+    //                         amount: parseFloat(this.amount) > 0 ? this.amount : 10,
+    //                         displayName: 'Braintree Testing',
+    //                         currency: 'USD'
+    //                     })
+    //                 },
+    //                 onAuthorize: (data, options) => {
+    //                     return paypalCheckoutInstance.tokenizePayment(data).then(payload => {
+    //                         console.log(payload);
+    //                         this.error = "";
+    //                         this.nonce = payload.nonce;
+    //                     })
+    //                 },
+    //                 onCancel: (data) => {
+    //                     console.log(data);
+    //                     console.log("Payment Cancelled");
+    //                 },
+    //                 onError: (err) => {
+    //                     console.error(err);
+    //                     this.error = "An error occurred while processing the paypal payment.";
+    //                 }
+    //             }, '#paypalButton')
+    //         })
+    //         .catch(err => {
             });
     }
 }
@@ -118,11 +121,13 @@ export default {
                     </div>
                     <form>
                         <div class="form-group">
-                            <label for="amount">Quantità</label>
+                            <label for="amount">prezzo</label>
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text">€</span></div>
-                                <input type="number" id="amount" v-model="amount" class="form-control"
-                                    placeholder="Inserisci il prezzo">
+                                <label class="form-control" type="disabledTextInput" placeholder="Inserisci il prezzo"  >{{ amount }}</label>
+
+                                <!-- <input type="disabledTextInput" id="amount" v-model="amount" class="form-control"
+                                    placeholder="Inserisci il prezzo"> -->
                             </div>
                         </div>
                         <hr />
@@ -145,7 +150,7 @@ export default {
                         <button class="btn btn-primary btn-block w-100 my-3" @click.prevent="payWithCreditCard">Paga con la
                             carta</button>
                         <hr />
-                        <div id="paypalButton"></div>
+                        <!-- <div id="paypalButton"></div> -->
                     </form>
                 </div>
             </div>
