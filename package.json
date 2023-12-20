@@ -17,7 +17,8 @@
     "paypal-checkout": "^4.0.338",
     "swiper": "^11.0.5",
     "vue": "^3.3.8",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
