@@ -50,7 +50,7 @@ export default {
 
 <template>
   <div class="app">
-    <div class="container w-75 my-5 border-2 rounded-1 p-5 d-flex flex-column">
+    <div class="container w-75 my-5 p-5 d-flex flex-column">
       <div class="d-flex justify-content-center align-content-center">
         <h1 style="color: #f18701" class="text-center">
           Riepilogo dell'ordine
@@ -74,7 +74,7 @@ export default {
       >
         <h3 class="mb-5 fw-bold">I tuoi articoli:</h3>
         <div
-          class="col-2 border_card d-flex flex-column justify-content-between"
+          class="col d-flex flex-column justify-content-between"
           v-for="cartProduct in store.cart"
         >
           <div class="fw-medium">{{ cartProduct.name }}</div>
@@ -90,19 +90,21 @@ export default {
           <small class="fw-lighter"
             >Prezzo Unitario:{{ cartProduct.price }}€</small
           >
-          <button
-            class="btn btn-danger mt-5 card-img-bottom"
-            @click="deleteCartProduct(cartProduct)"
-          >
-            Rimuovi
-          </button>
+          <div class="">
+            <button
+              class="btn btn-danger mt-5"
+              @click="deleteCartProduct(cartProduct)"
+            >
+              Rimuovi
+            </button>
+          </div>
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-8">
+        <div class="col">
           <h3>TOTALE :</h3>
         </div>
-        <div class="col-4 d-flex justify-content-between">
+        <div class="col d-flex justify-content-between">
           <span class="fs-4 fw-medium">{{ store.totalPrice }} €</span>
           <button class="btn btn_color rounded-pill">
             <router-link

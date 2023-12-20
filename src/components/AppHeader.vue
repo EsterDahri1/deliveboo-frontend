@@ -55,7 +55,7 @@ export default {
                 alt="Sugar Glider logo"
                 width="100"
                 height="100"
-                class=""
+                class="d-xs-none"
               />
               Deliveboo
             </a>

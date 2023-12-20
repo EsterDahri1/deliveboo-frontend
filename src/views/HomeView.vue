@@ -71,7 +71,7 @@ export default {
         <div
           class="home-header w-75 m-auto p-4 rounded-5 d-flex flex-column align-items-center justify-content-center"
         >
-          <h1 class="text-center fw-bold orange font pt-5">
+          <h1 class="text-center fw-bold orange font pt-5 fs">
             Il tuo ristorante preferito ad un salto di distanza
           </h1>
 
@@ -135,6 +135,7 @@ export default {
                   </label>
                 </div>
                 <div class="d-flex py-3">
+
                   <router-link
                     :to="{
                       path: '/restaurants',
@@ -152,12 +153,17 @@ export default {
             <div class="w-75 m-auto">
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 <div v-for="restaurant in allRestaurants" class="col">
+
                   <router-link
                     :to="{
-                      name: 'restaurant',
-                      params: { id: restaurant.id },
+                      path: '/restaurants',
+                      query: { typologies: stringItems },
                     }"
+                    class="nav-link"
                   >
+
+                    <button class="button-17 py-2">Vai ai ristoranti</button>
+
                     <div class="card shadow h-100">
                       <div v-if="restaurant.cover_image == ''">
                         <img
@@ -183,12 +189,58 @@ export default {
                         </p>
                       </div>
                     </div>
+
                   </router-link>
                 </div>
               </div>
             </div>
+            <div class="col-lg-9">
+              <div class="w-100 m-auto">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <div v-for="restaurant in allRestaurants" class="col">
+                    <router-link
+                      :to="{
+                        name: 'restaurant',
+                        params: { id: restaurant.id },
+                      }"
+                    >
+                      <div class="card shadow h-100">
+                        <div v-if="restaurant.cover_image == ''">
+                          <img
+                            style="width: 100%; aspect-ratio: 1 / 1"
+                            src="https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div v-else>
+                          <img
+                            class="card-img-top restaurant_images"
+                            :src="restaurant.cover_image"
+                            alt="Title"
+                          />
+                        </div>
+                        <div class="card-body">
+                          <h4 class="card-title">"{{ restaurant.name }}"</h4>
+
+                          <p
+                            v-for="typology in restaurant.typologies"
+                            class="card-text"
+                          >
+                            <i
+                              class="fa-solid fa-utensils"
+                              style="color: #fd7126"
+                            ></i>
+                            {{ typology.name_typology }}
+                          </p>
+                        </div>
+                      </div>
+                    </router-link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container py-5"></div>
           </div>
-          <div class="container py-5"></div>
         </div>
       </section>
     </section>
@@ -197,8 +249,8 @@ export default {
 
     <section class="banner_consegna py-5">
       <div class="container consegna bg-white rounded-3 border-2 shadow">
-        <div class="row align-items-center">
-          <div class="col-6 px-5">
+        <div class="row row-cols-1 row-cols-md-2 align-items-center">
+          <div class="col-lg-6 px-5">
             <h1 class="mb-4">Noi consegnamo qui!</h1>
             <p class="fs-5">
               I piatti e i prodotti che ami, consegnati in pochissimo tempo.
