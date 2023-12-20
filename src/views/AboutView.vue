@@ -9,11 +9,11 @@ export default {
 
 <template>
   <main>
-    <div class="img_home text-white text-center w-100">
+    <div class="img_home text-white text-center w-100 shadow">
       <!-- <h1 style="color: darkorange;" class="py-5">THE MASKED MARTINI</h1>
         <h2 class="">Dream cocktails just a click away</h2> -->
     </div>
-    <div class="blue">
+    <div class="">
       <div
         class="container d-flex flex-lg-nowrap flex-xs-wrap flex-sm-wrap py-5"
       >

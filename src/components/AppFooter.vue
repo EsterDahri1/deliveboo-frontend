@@ -31,7 +31,7 @@ export default {
                 </li>
                 <li class="text-start"><a href="#">Altro</a></li>
                 <li class="text-start"><a href="#">Pressroom</a></li>
-                <li class="text-start"><a href="#">Porgrammazione</a></li>
+                <li class="text-start"><a href="#">Programmazione</a></li>
                 <li class="text-start"><a href="#">Design</a></li>
                 <li class="text-start"><a href="#">Lavora con noi</a></li>
                 <li class="text-start">
