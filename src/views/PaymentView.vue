@@ -17,16 +17,16 @@ export default {
         }
     },
     methods: {
-        getClientToken(){
+        getClientToken() {
             axios
-            .get(this.base_url + this.orders_url)
-            .then((response) => {
-                this.clientToken = response.data.token
-                console.log(this.clientToken);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+                .get(this.base_url + this.orders_url)
+                .then((response) => {
+                    this.clientToken = response.data.token
+                    console.log(this.clientToken);
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
         },
         payWithCreditCard() {
             if (this.hostedFieldInstance) {
