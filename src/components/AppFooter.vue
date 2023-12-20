@@ -20,18 +20,14 @@ export default {
                   <a href="#">Investitori</a>
                 </li>
                 <li class="nav-item">
-                  <router-link to="/about" class="nav-link"
-                    >Chi siamo</router-link
-                  >
+                  <router-link to="/about" class="nav-link">Chi siamo</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link to="/Restaurant" class="nav-link"
-                    >Ristoranti</router-link
-                  >
+                  <router-link to="/Restaurant" class="nav-link">Ristoranti</router-link>
                 </li>
                 <li class="text-start"><a href="#">Altro</a></li>
                 <li class="text-start"><a href="#">Pressroom</a></li>
-                <li class="text-start"><a href="#">Porgrammazione</a></li>
+                <li class="text-start"><a href="#">Programmazione</a></li>
                 <li class="text-start"><a href="#">Design</a></li>
                 <li class="text-start"><a href="#">Lavora con noi</a></li>
                 <li class="text-start">
@@ -69,20 +65,11 @@ export default {
             <div class="help p-4 border-0 h-100 rounded-4">
               <h4 class="text-light mb-3">Scarica la nostra App</h4>
               <div class="d-flex flex-column gap-3 py-2">
-                <a
-                  href="https://www.apple.com/it/app-store/"
-                  class="footer-link apple"
-                >
+                <a href="https://www.apple.com/it/app-store/" class="footer-link apple">
                   <img src="../assets/img/apple.png" alt="" />
                 </a>
-                <a
-                  href="https://play.google.com/store/games?hl=it&gl=US"
-                  class="footer-link"
-                >
-                  <img
-                    src="../assets/img/Google_Play_Store_badge_IT.svg.png"
-                    alt=""
-                  />
+                <a href="https://play.google.com/store/games?hl=it&gl=US" class="footer-link">
+                  <img src="../assets/img/Google_Play_Store_badge_IT.svg.png" alt="" />
                 </a>
               </div>
             </div>
@@ -91,15 +78,9 @@ export default {
       </div>
       <div class="bottom d-flex justify-content-between p-3">
         <div class="social">
-          <a href="https://www.facebook.com/"
-            ><i class="pe-3 fa-brands fa-facebook fa-xl"></i
-          ></a>
-          <a href="https://www.instagram.com/"
-            ><i class="pe-3 fa-brands fa-instagram fa-xl"></i
-          ></a>
-          <a href="https://twitter.com/?lang=en"
-            ><i class="pe-3 fa-brands fa-x-twitter fa-xl"></i
-          ></a>
+          <a href="https://www.facebook.com/"><i class="pe-3 fa-brands fa-facebook fa-xl"></i></a>
+          <a href="https://www.instagram.com/"><i class="pe-3 fa-brands fa-instagram fa-xl"></i></a>
+          <a href="https://twitter.com/?lang=en"><i class="pe-3 fa-brands fa-x-twitter fa-xl"></i></a>
         </div>
         <div class="copyright">&copy; Boolean 2023 Team 4</div>
       </div>
@@ -127,7 +108,7 @@ export default {
     background-color: #ffffffa9;
   }
 
-  li > a {
+  li>a {
     font-size: 15px;
     text-decoration: none;
     color: white;

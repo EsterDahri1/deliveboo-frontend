@@ -45,7 +45,7 @@ export default {
 
 <template>
   <header class="bg_header_footer">
-    <nav class="navbar navbar-expand-sm bg_header_footer">
+    <nav class="navbar navbar-expand-lg bg_header_footer">
       <div class="container">
         <a class="navbar-brand" href="#">
           <div class="logo">
