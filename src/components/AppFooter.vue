@@ -11,7 +11,7 @@ export default {
   <div class="footer bg_header_footer">
     <div class="container">
       <div class="top p-3">
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-lg-4 g-3 mt-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3 mt-3">
           <div class="col">
             <div class="about text-light p-4 border-0 h-100 rounded-4">
               <h4>Scopri la nostra App</h4>
@@ -31,7 +31,7 @@ export default {
                 </li>
                 <li class="text-start"><a href="#">Altro</a></li>
                 <li class="text-start"><a href="#">Pressroom</a></li>
-                <li class="text-start"><a href="#">Programmazione</a></li>
+                <li class="text-start"><a href="#">Porgrammazione</a></li>
                 <li class="text-start"><a href="#">Design</a></li>
                 <li class="text-start"><a href="#">Lavora con noi</a></li>
                 <li class="text-start">
@@ -112,6 +112,10 @@ export default {
 
 .bg_header_footer {
   background-color: $del_danger;
+}
+
+.footer {
+  height: 55vh;
 }
 
 .top {
