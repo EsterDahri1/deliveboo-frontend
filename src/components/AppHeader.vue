@@ -46,8 +46,8 @@ export default {
 <template>
   <header class="bg_header_footer">
     <div class="container">
-      <nav class="navbar navbar-expand-lg bg_navbar p-0">
-        <div class="container-fluid d-flex justify-content-between">
+      <nav class="navbar navbar-expand-lg bg_navbar">
+        <div class="container-fluid d-flex">
           <div class="logo">
             <a class="navbar-brand text-light d-xs-none" href="#">
               <img
@@ -76,15 +76,17 @@ export default {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <router-link to="/" class="nav-link">Home</router-link>
+                <router-link to="/" class="nav-link text-light"
+                  >Home</router-link
+                >
               </li>
               <li class="nav-item">
-                <router-link to="/about" class="nav-link"
+                <router-link to="/about" class="nav-link text-light"
                   >Chi siamo</router-link
                 >
               </li>
               <li class="nav-item">
-                <router-link to="/cart" class="nav-link"
+                <router-link to="/cart" class="nav-link text-light"
                   ><i
                     class="fa-solid fa-cart-shopping position-relative fa-xl"
                   ></i>
@@ -97,7 +99,7 @@ export default {
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"
+                <a class="nav-link text-light" href="#"
                   >Login <i class="fa-solid fa-arrow-right-to-bracket"></i
                 ></a>
               </li>
@@ -112,9 +114,6 @@ export default {
 <style scoped lang="scss">
 @use "../assets/scss/partials/variables" as *;
 
-header {
-  height: 15vh;
-}
 .bg_header_footer {
   background-color: $del_danger;
 }

@@ -113,9 +113,11 @@ export default {
 
       <section class="my-5">
         <div class="container">
-          <div class="row row-cols-sm-1 row-cols-lg-2">
+          <div
+            class="row row-cols-sm-1 row-cols-lg-2 gap-3 justify-content-between"
+          >
             <div class="col-lg-2">
-              <div class="mt-5 w-75">
+              <div class="mt-5 w-100">
                 <div
                   v-for="typology in typologies"
                   class="m-auto form-check rounded-2 text-center d-flex align-items-center fs-5 mb-2 border-bottom"
@@ -135,7 +137,6 @@ export default {
                   </label>
                 </div>
                 <div class="d-flex py-3">
-
                   <router-link
                     :to="{
                       path: '/restaurants',
@@ -148,56 +149,10 @@ export default {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-9">
-            <div class="w-75 m-auto">
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                <div v-for="restaurant in allRestaurants" class="col">
-
-                  <router-link
-                    :to="{
-                      path: '/restaurants',
-                      query: { typologies: stringItems },
-                    }"
-                    class="nav-link"
-                  >
-
-                    <button class="button-17 py-2">Vai ai ristoranti</button>
-
-                    <div class="card shadow h-100">
-                      <div v-if="restaurant.cover_image == ''">
-                        <img
-                          style="width: 100%; aspect-ratio: 1 / 1"
-                          src="https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div v-else>
-                        <img
-                          class="card-img-top restaurant_images"
-                          :src="restaurant.cover_image"
-                          alt="Title"
-                        />
-                      </div>
-                      <div class="card-body">
-                        <h4 class="card-title">{{ restaurant.name }}</h4>
-                        <p
-                          v-for="typology in restaurant.typologies"
-                          class="card-text"
-                        >
-                          {{ typology.name_typology }}
-                        </p>
-                      </div>
-                    </div>
-
-                  </router-link>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-9">
+            <div class="col-lg-9 gap-3 mt-5">
               <div class="w-100 m-auto">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                  <div v-for="restaurant in allRestaurants" class="col">
+                <div class="row row-cols-1 row-cols-md-3">
+                  <div v-for="restaurant in allRestaurants" class="col mb-4">
                     <router-link
                       :to="{
                         name: 'restaurant',
@@ -239,7 +194,6 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="container py-5"></div>
           </div>
         </div>
       </section>
@@ -251,7 +205,7 @@ export default {
       <div class="container consegna bg-white rounded-3 border-2 shadow">
         <div class="row row-cols-1 row-cols-md-2 align-items-center">
           <div class="col-lg-6 px-5">
-            <h1 class="mb-4">Noi consegnamo qui!</h1>
+            <h1 class="my-4">Noi consegnamo qui!</h1>
             <p class="fs-5">
               I piatti e i prodotti che ami, consegnati in pochissimo tempo.
               Vedrai quando il rider ha ritirato l'ordine, che potrai seguire

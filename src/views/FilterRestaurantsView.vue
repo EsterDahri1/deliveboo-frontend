@@ -93,7 +93,40 @@ export default {
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         <div v-for="restaurant in restaurants" class="col">
           <div v-if="restaurant.cover_image == ''"></div>
-          <div class="card shadow h-100">
+          <router-link
+            :to="{
+              name: 'restaurant',
+              params: { id: restaurant.id },
+            }"
+          >
+            <div class="card shadow h-100">
+              <div v-if="restaurant.cover_image == ''">
+                <img
+                  style="width: 100%; aspect-ratio: 1 / 1"
+                  src="https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg"
+                  alt=""
+                />
+              </div>
+              <div v-else>
+                <img
+                  class="card-img-top restaurant_images"
+                  :src="restaurant.cover_image"
+                  alt="Title"
+                />
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">"{{ restaurant.name }}"</h4>
+
+                <p v-for="typology in restaurant.typologies" class="card-text">
+                  <i class="fa-solid fa-utensils" style="color: #fd7126"></i>
+                  {{ typology.name_typology }}
+                </p>
+              </div>
+            </div>
+          </router-link>
+
+          <!-- <div class="card shadow h-100">
+            
             <div v-if="restaurant.cover_image == ''">
               <img
                 style="width: 100%; aspect-ratio: 1 / 1"
@@ -115,7 +148,7 @@ export default {
                 {{ typology.name_typology }}
               </h6>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -154,5 +187,9 @@ export default {
 .restaurant_images {
   object-fit: cover;
   aspect-ratio: 1 / 1;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

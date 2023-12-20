@@ -114,9 +114,9 @@ export default {
   background-color: $del_danger;
 }
 
-.footer {
-  height: 55vh;
-}
+// .footer {
+//   height: 55vh;
+// }
 
 .top {
   // .card:hover {
