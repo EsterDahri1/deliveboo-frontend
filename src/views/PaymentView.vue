@@ -21,6 +21,7 @@ export default {
             email: '',
             restaurant_id: store.cart[0].restaurant_id,
             products_name: [],
+            products_quantity: [],
 
         }
     },
@@ -35,6 +36,7 @@ export default {
                 restaurant_id: this.restaurant_id,
                 totalPrice: this.amount,
                 products_name: this.products_name.toString(' '),
+                products_quantity: this.products_quantity.toString(' ')
             })
             console.warn(result)
         },
@@ -104,7 +106,12 @@ export default {
             this.products_name.push(product.name)
         })
 
-        console.log(this.products_name.toString(' '));
+        store.cart.forEach(quantity => {
+            this.products_quantity.push(quantity.quantity
+)
+        })
+
+        console.log(this.products_quantity);
 
         // store.cart.forEach(product => {
         //     console.log(product.name);
