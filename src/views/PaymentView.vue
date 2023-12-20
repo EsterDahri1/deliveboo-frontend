@@ -14,20 +14,43 @@ export default {
             orders_url: '/api/orders',
             clientToken: '',
 
+
+            costumer: '',
+            costumerAddress: '',
+            phoneNumber: '',
+            email: '',
+            restaurant_id: 1,
+
         }
     },
     methods: {
-        getClientToken(){
-            axios
-            .get(this.base_url + this.orders_url)
-            .then((response) => {
-                this.clientToken = response.data.token
-                console.log(this.clientToken);
+
+        async dataSend() {
+            let result = await axios.post('http://localhost:8000/api/payment', {
+                costumer: this.costumer,
+                costumerAddress: this.costumerAddress,
+                phoneNumber: this.phoneNumber,
+                email: this.email,
+                restaurant_id: this.restaurant_id,
+                totalPrice: this.amount,
             })
-            .catch((err) => {
-                console.error(err);
-            });
+            console.warn(result)
         },
+
+
+
+        getClientToken() {
+            axios
+                .get(this.base_url + this.orders_url)
+                .then((response) => {
+                    this.clientToken = response.data.token
+                    console.log(this.clientToken);
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        },
+
         payWithCreditCard() {
             if (this.hostedFieldInstance) {
                 this.error = "";
@@ -45,9 +68,12 @@ export default {
         },
 
         submitForm() {
+            // console.log(this.data);
+            this.dataSend()
+
             let data = JSON.stringify({
                 "token": "fake-valid-nonce",
-                "amount": this.amount
+                "amount": this.amount,
             });
 
             let config = {
@@ -68,10 +94,11 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-
         }
     },
     mounted() {
+
+        // this.inviaDati()
 
         this.getClientToken();
 
@@ -113,41 +140,7 @@ export default {
                 // const paypalCheckoutInstance = instances[1];
                 // Use hostedFieldInstance to send data to Braintree
                 this.hostedFieldInstance = hostedFieldInstance;
-                // Setup PayPal Button
-                //             return paypal.Button.render({
-                //                 env: 'sandbox',
-                //                 style: {
-                //                     label: 'paypal',
-                //                     size: 'responsive',
-                //                     shape: 'rect'
-                //                 },
-                //                 payment: () => {
-                //                     return paypalCheckoutInstance.createPayment({
-                //                         flow: 'checkout',
-                //                         intent: 'sale',
-                //                         amount: parseFloat(this.amount) > 0 ? this.amount : 10,
-                //                         displayName: 'Braintree Testing',
-                //                         currency: 'USD'
-                //                     })
-                //                 },
-                //                 onAuthorize: (data, options) => {
-                //                     return paypalCheckoutInstance.tokenizePayment(data).then(payload => {
-                //                         console.log(payload);
-                //                         this.error = "";
-                //                         this.nonce = payload.nonce;
-                //                     })
-                //                 },
-                //                 onCancel: (data) => {
-                //                     console.log(data);
-                //                     console.log("Payment Cancelled");
-                //                 },
-                //                 onError: (err) => {
-                //                     console.error(err);
-                //                     this.error = "An error occurred while processing the paypal payment.";
-                //                 }
-                //             }, '#paypalButton')
-                //         })
-                //         .catch(err => {
+
             });
     }
 }
@@ -199,6 +192,26 @@ export default {
                                     <div id="cvv" class="form-control"></div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="costumer">Nome</label>
+                            <input type="text" id="costumer" v-model="costumer" class="form-control"
+                                placeholder="Inserisci il tuo nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="costumerAddress">Indirizzo</label>
+                            <input type="text" id="costumerAddress" v-model="costumerAddress" class="form-control"
+                                placeholder="Inserisci il tuo indirizzo">
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Numero di telefono</label>
+                            <input type="tel" id="phoneNumber" v-model="phoneNumber" class="form-control"
+                                placeholder="Inserisci il tuo numero di telefono">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" v-model="email" class="form-control"
+                                placeholder="Inserisci la tua email">
                         </div>
                         <button class="btn btn-primary btn-block w-100 my-3" @click.prevent="payWithCreditCard">Paga con la
                             carta</button>
