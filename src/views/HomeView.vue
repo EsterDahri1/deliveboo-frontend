@@ -184,7 +184,7 @@ export default {
               }" class="nav-link">Ordina adesso!</router-link>
             </button>
           </div>
-          <div class="col-6 align-self-end map p-0">
+          <div class="col-6 align-self-center map pe-3">
             <img class="img-fluid" src="../assets/img/moncalvo.png" alt="" srcset="" />
           </div>
         </div>
