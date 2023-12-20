@@ -45,69 +45,45 @@ export default {
 
 <template>
   <header class="bg_header_footer">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg bg_navbar">
-        <div class="container-fluid d-flex">
+    <nav class="navbar navbar-expand-sm bg_header_footer">
+      <div class="container">
+        <a class="navbar-brand" href="#">
           <div class="logo">
             <a class="navbar-brand text-light d-xs-none" href="#">
-              <img
-                src="../assets/img/logosfondo.png"
-                alt="Sugar Glider logo"
-                width="100"
-                height="100"
-                class="d-xs-none"
-              />
+              <img src="../assets/img/logosfondo.png" alt="Sugar Glider logo" width="100" height="100"
+                class="d-xs-none" />
               Deliveboo
             </a>
           </div>
-          <div class="menu_navbar">
-            <button
-              class="navbar-toggler bg-white"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <router-link to="/" class="nav-link text-light"
-                  >Home</router-link
-                >
-              </li>
-              <li class="nav-item">
-                <router-link to="/about" class="nav-link text-light"
-                  >Chi siamo</router-link
-                >
-              </li>
-              <li class="nav-item">
-                <router-link to="/cart" class="nav-link text-light"
-                  ><i
-                    class="fa-solid fa-cart-shopping position-relative fa-xl"
-                  ></i>
-                  <span
-                    v-if="store.cart.length > 0"
-                    class="position-absolute translate-middle badge rounded-pill bg-primary fs-6"
-                    >{{ store.totalItem }}
-                    <span class="visually-hidden">unread messages</span>
-                  </span></router-link
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-light" href="#"
-                  >Login <i class="fa-solid fa-arrow-right-to-bracket"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <router-link to="/" class="nav-link text-light">Home</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/about" class="nav-link text-light">Chi siamo</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/cart" class="nav-link text-light"><i
+                  class="fa-solid fa-cart-shopping position-relative fa-xl"></i>
+                <span v-if="store.cart.length > 0"
+                  class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.totalItem }}
+                  <span class="visually-hidden">unread messages</span>
+                </span></router-link>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
 </template>
 
