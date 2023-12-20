@@ -227,6 +227,9 @@ export default {
               alt=""
               srcset=""
             />
+=======
+          <div class="col-6 align-self-center map pe-3">
+            <img class="img-fluid" src="../assets/img/moncalvo.png" alt="" srcset="" />
           </div>
         </div>
       </div>

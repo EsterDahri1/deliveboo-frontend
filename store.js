@@ -1,6 +1,15 @@
 import { reactive } from "vue";
+// import { BraintreeGateway } from "braintree";
 
 export const store = reactive({
+    // braintree: require("braintree"),
+
+    // gateway: new braintree.BraintreeGateway({
+    //     environment: braintree.Environment.Sandbox,
+    //     merchantId: "bhcnjb7v5ps4kyg2",
+    //     publicKey: "n78rfbjjfj9kfy4r",
+    //     privateKey: "b5608ecc38630b78349f565d1f8425f2"
+    // }),
     cart: JSON.parse(localStorage.getItem("storageCart")) || [],
     totalPrice: JSON.parse(localStorage.getItem("storageTotalPrice")) || 0,
     singleCart: [],
