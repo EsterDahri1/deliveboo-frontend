@@ -39,6 +39,9 @@ export default {
                 products_quantity: this.products_quantity.toString(' ')
             })
             console.warn(result)
+            store.cart = []
+            store.totalPrice = 0
+
         },
 
 
@@ -49,6 +52,7 @@ export default {
                 .then((response) => {
                     this.clientToken = response.data.token
                     console.log(this.clientToken);
+
                 })
                 .catch((err) => {
                     console.error(err);
@@ -111,7 +115,7 @@ export default {
 )
         })
 
-        console.log(this.products_quantity);
+        console.log(store.totalPrice);
 
         // store.cart.forEach(product => {
         //     console.log(product.name);
