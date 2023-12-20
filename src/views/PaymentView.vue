@@ -2,16 +2,32 @@
 import braintree from 'braintree-web';
 // import paypal from 'paypal-checkout';
 import { store } from '../../store';
+import axios from 'axios';
 export default {
     data() {
         return {
             hostedFieldInstance: false,
             nonce: "",
             error: "",
-            amount: store.totalPrice
+            amount: store.totalPrice,
+            base_url: "http://localhost:8000",
+            orders_url: '/api/orders',
+            clientToken: '',
+
         }
     },
     methods: {
+        getClientToken() {
+            axios
+                .get(this.base_url + this.orders_url)
+                .then((response) => {
+                    this.clientToken = response.data.token
+                    console.log(this.clientToken);
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        },
         payWithCreditCard() {
             if (this.hostedFieldInstance) {
                 this.error = "";
@@ -19,16 +35,46 @@ export default {
                 this.hostedFieldInstance.tokenize().then(payload => {
                     console.log(payload);
                     this.nonce = payload.nonce;
+                    this.submitForm()
                 })
                     .catch(err => {
                         console.error(err);
                         this.error = err.message;
                     })
             }
+        },
+
+        submitForm() {
+            let data = JSON.stringify({
+                "token": "fake-valid-nonce",
+                "amount": this.amount
+            });
+
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:8000/api/orders',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                data: data
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
         }
     },
     mounted() {
-        console.log(store);
+
+        this.getClientToken();
+
 
         braintree.client.create({
             authorization: "sandbox_nd6bgb7z_bhcnjb7v5ps4kyg2"
@@ -68,46 +114,52 @@ export default {
                 // Use hostedFieldInstance to send data to Braintree
                 this.hostedFieldInstance = hostedFieldInstance;
                 // Setup PayPal Button
-    //             return paypal.Button.render({
-    //                 env: 'sandbox',
-    //                 style: {
-    //                     label: 'paypal',
-    //                     size: 'responsive',
-    //                     shape: 'rect'
-    //                 },
-    //                 payment: () => {
-    //                     return paypalCheckoutInstance.createPayment({
-    //                         flow: 'checkout',
-    //                         intent: 'sale',
-    //                         amount: parseFloat(this.amount) > 0 ? this.amount : 10,
-    //                         displayName: 'Braintree Testing',
-    //                         currency: 'USD'
-    //                     })
-    //                 },
-    //                 onAuthorize: (data, options) => {
-    //                     return paypalCheckoutInstance.tokenizePayment(data).then(payload => {
-    //                         console.log(payload);
-    //                         this.error = "";
-    //                         this.nonce = payload.nonce;
-    //                     })
-    //                 },
-    //                 onCancel: (data) => {
-    //                     console.log(data);
-    //                     console.log("Payment Cancelled");
-    //                 },
-    //                 onError: (err) => {
-    //                     console.error(err);
-    //                     this.error = "An error occurred while processing the paypal payment.";
-    //                 }
-    //             }, '#paypalButton')
-    //         })
-    //         .catch(err => {
+                //             return paypal.Button.render({
+                //                 env: 'sandbox',
+                //                 style: {
+                //                     label: 'paypal',
+                //                     size: 'responsive',
+                //                     shape: 'rect'
+                //                 },
+                //                 payment: () => {
+                //                     return paypalCheckoutInstance.createPayment({
+                //                         flow: 'checkout',
+                //                         intent: 'sale',
+                //                         amount: parseFloat(this.amount) > 0 ? this.amount : 10,
+                //                         displayName: 'Braintree Testing',
+                //                         currency: 'USD'
+                //                     })
+                //                 },
+                //                 onAuthorize: (data, options) => {
+                //                     return paypalCheckoutInstance.tokenizePayment(data).then(payload => {
+                //                         console.log(payload);
+                //                         this.error = "";
+                //                         this.nonce = payload.nonce;
+                //                     })
+                //                 },
+                //                 onCancel: (data) => {
+                //                     console.log(data);
+                //                     console.log("Payment Cancelled");
+                //                 },
+                //                 onError: (err) => {
+                //                     console.error(err);
+                //                     this.error = "An error occurred while processing the paypal payment.";
+                //                 }
+                //             }, '#paypalButton')
+                //         })
+                //         .catch(err => {
             });
     }
 }
 </script>
 
 <template>
+    <div id="dropin-container"></div>
+
+
+
+
+
     <div class="container py-5">
         <div class="col-6 offset-3">
             <div class="card bg-warning-subtle">
@@ -124,7 +176,8 @@ export default {
                             <label for="amount">prezzo</label>
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text">€</span></div>
-                                <label class="form-control" type="disabledTextInput" placeholder="Inserisci il prezzo"  >{{ amount }}</label>
+                                <label class="form-control" type="disabledTextInput" placeholder="Inserisci il prezzo">{{
+                                    amount }}</label>
 
                                 <!-- <input type="disabledTextInput" id="amount" v-model="amount" class="form-control"
                                     placeholder="Inserisci il prezzo"> -->
@@ -158,6 +211,4 @@ export default {
     </div>
 </template>
 
-<style>
-
-</style>
+<style></style>
