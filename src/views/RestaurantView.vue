@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { store } from "../../store";
+import { useToast } from "vue-toastification";
 export default {
   name: "RestaurantView",
   data() {
@@ -9,6 +10,10 @@ export default {
       restaurant: {},
       value: "",
     };
+  },
+  setup() {
+    const toast = useToast();
+    return { toast }
   },
   mounted() {
     const url = `http://localhost:8000/api/restaurant/${this.$route.params.id}`;
@@ -27,6 +32,22 @@ export default {
     this.store.saveCartToLocalStorage();
   },
   methods: {
+    triggerToast() {
+      this.toast.success("Prodotto aggiunto con successo!", {
+        position: "bottom-right",
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: "fa-regular fa-circle-check",
+        rtl: false
+      });
+    },
     getCart(product) {
       if (store.cart[0] !== undefined) {
         console.log(store.cart[0], "TEST CART1");
@@ -78,25 +99,17 @@ export default {
 
 <template>
   <div class="app">
+
     <body>
       <div class="img_container">
-        <div
-          v-if="restaurant.cover_image !== ''"
-          class="bg_banner w-100"
+        <div v-if="restaurant.cover_image !== ''" class="bg_banner w-100"
           v-bind:style="{ backgroundImage: `url(${restaurant.cover_image})` }"
-          style="background-repeat: no-repeat; background-size: cover"
-          alt=""
-        ></div>
-        <div
-          v-else
-          class="bg_banner w-100"
-          style="
+          style="background-repeat: no-repeat; background-size: cover" alt=""></div>
+        <div v-else class="bg_banner w-100" style="
             background-repeat: no-repeat;
             background-image: url('https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg');
             background-size: cover;
-          "
-          alt=""
-        ></div>
+          " alt=""></div>
 
         <div class="mt-n5 menu_restaurant">
           <div class="container menu pb-5">
@@ -107,15 +120,9 @@ export default {
                   {{ restaurant.address }}
                 </h5>
               </div>
-              <div
-                v-for="product in restaurant.products"
-                class="card-body d-flex border-bottom"
-              >
+              <div v-for="product in restaurant.products" class="card-body d-flex border-bottom">
                 <div class="col-4 align-content-center">
-                  <img
-                    :src="`http://localhost:8000/storage/${product.cover_image}`"
-                    class="w-50"
-                  />
+                  <img :src="`http://localhost:8000/storage/${product.cover_image}`" class="w-50" />
                 </div>
                 <div class="col-5">
                   <h5 class="card-title">{{ product.name }}</h5>
@@ -126,10 +133,8 @@ export default {
                 </div>
 
                 <div class="col-3 align-content-center">
-                  <button
-                    class="btn orange text-white text-decoration-none"
-                    v-on:click.prevent="getCart(product)"
-                  >
+                  <button class="btn orange text-white text-decoration-none" v-on:click.prevent="getCart(product)"
+                    @click="triggerToast">
                     Aggiungi al carrello
                   </button>
                 </div>
