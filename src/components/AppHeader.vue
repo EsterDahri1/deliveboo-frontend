@@ -78,7 +78,8 @@ export default {
                 </span></router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+              <a class="nav-link text-light" href="http://127.0.0.1:8000/login">Login <i
+                  class="fa-solid fa-arrow-right-to-bracket"></i></a>
             </li>
           </ul>
         </div>
