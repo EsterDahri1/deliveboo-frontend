@@ -15,12 +15,10 @@ export default {
     </div>
     <div class="">
       <div
-        class="container d-flex flex-lg-nowrap flex-xs-wrap flex-sm-wrap py-5"
+        class="container d-flex flex-lg-nowrap flex-xs-nowrap flex-sm-wrap py-5"
       >
         <div class="row row-cols-3">
-          <div
-            class="col-6 bg-white col-sm-12 col-md-6 p-0 rounded-4 border-0 shadow"
-          >
+          <div class="col-12 bg-white col-md-6 p-0 rounded-4 border-0 shadow">
             <img
               class="img-card"
               src="../assets/img/pexels-fauxels-3184423.jpg"
@@ -39,10 +37,10 @@ export default {
           </div>
 
           <div
-            class="col-6 d-flex flex-wrap flex-row justify-content-center gap-4 col-sm-12 col-md-6 col-xs-12"
+            class="col-12 d-flex flex-wrap flex-row justify-content-center gap-4 col-md-6"
           >
-            <div class="col-6 col-md-5 col-sm-12">
-              <div class="card h-100 col-xs-12 rounded border-0 shadow">
+            <div class="col-12 col-md-5">
+              <div class="card h-100 rounded border-0 shadow">
                 <div class="card-img-top">
                   <img
                     style="width: 100%"
@@ -63,7 +61,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-12 col-md-5">
+            <div class="col-12 col-md-5">
               <div class="card h-100 rounded border-0 shadow">
                 <div class="card-img-top">
                   <img
@@ -84,7 +82,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-12 col-md-5">
+            <div class="col-12 col-md-5">
               <div class="card h-100 rounded border-0 shadow">
                 <div class="card-img-top">
                   <img
@@ -104,7 +102,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-12 col-md-5">
+            <div class="col-12 col-md-5">
               <div class="card h-100 rounded border-0 shadow">
                 <div class="card-img-top">
                   <img

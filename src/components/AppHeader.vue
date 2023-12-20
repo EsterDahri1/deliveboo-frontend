@@ -49,43 +49,59 @@ export default {
       <nav class="navbar navbar-expand-lg bg_navbar p-0">
         <div class="container-fluid d-flex justify-content-between">
           <div class="logo">
-            <a class="navbar-brand text-light fs-3" href="#">
-              <img src="../assets/img/logosfondo.png" alt="Sugar Glider logo" width="100" height="100" class="" />
+            <a class="navbar-brand text-light d-xs-none" href="#">
+              <img
+                src="../assets/img/logosfondo.png"
+                alt="Sugar Glider logo"
+                width="100"
+                height="100"
+                class="d-xs-none"
+              />
               Deliveboo
             </a>
           </div>
           <div class="menu_navbar">
-            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-              aria-label="Toggle navigation">
+            <button
+              class="navbar-toggler bg-white"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item fs-5">
-                  <!-- <a class="nav-link" aria-current="page" href="#">Home</a> -->
-                  <router-link to="/" class="nav-link">Home</router-link>
-                </li>
-                <li class="nav-item fs-5">
-                  <router-link to="/about" class="nav-link">Chi siamo</router-link>
-                </li>
-                <li class="nav-item fs-5">
-                  <!-- <a class="nav-link" href="#">Cart <i class="fa-solid fa-cart-shopping"></i></a> -->
-                  <router-link to="/cart" class="nav-link"><i
-                      class="fa-solid fa-cart-shopping position-relative fa-xl"></i>
-                    <span v-if="store.cart.length > 0"
-                      class="position-absolute translate-middle badge rounded-pill bg-primary fs-6">{{ store.totalItem }}
-                      <span class="visually-hidden">unread messages</span>
-                    </span></router-link>
-                </li>
-                <li class="nav-item fs-5">
-                  <a class="nav-link" href="#">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-
-                  <!--TODO ask what's that for...-->
-                  <!-- <a href="https etc" class="btn item" target="__blank">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a> -->
-                </li>
-              </ul>
-            </div>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <router-link to="/" class="nav-link">Home</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/about" class="nav-link"
+                  >Chi siamo</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link to="/cart" class="nav-link"
+                  ><i
+                    class="fa-solid fa-cart-shopping position-relative fa-xl"
+                  ></i>
+                  <span
+                    v-if="store.cart.length > 0"
+                    class="position-absolute translate-middle badge rounded-pill bg-primary fs-6"
+                    >{{ store.totalItem }}
+                    <span class="visually-hidden">unread messages</span>
+                  </span></router-link
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  >Login <i class="fa-solid fa-arrow-right-to-bracket"></i
+                ></a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

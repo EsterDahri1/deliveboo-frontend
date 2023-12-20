@@ -69,9 +69,9 @@ export default {
     <section class="intro">
       <div class="wrapper py-5">
         <div
-          class="home-header w-50 m-auto p-4 rounded-5 d-flex flex-column align-items-center justify-content-center"
+          class="home-header w-75 m-auto p-4 rounded-5 d-flex flex-column align-items-center justify-content-center"
         >
-          <h1 class="text-center fw-bold orange font pt-5">
+          <h1 class="text-center fw-bold orange font pt-5 fs">
             Il tuo ristorante preferito ad un salto di distanza
           </h1>
           <div class="d-flex justify-content-center my-3 align-items-center">
@@ -111,87 +111,88 @@ export default {
       <!-- </div> -->
 
       <section class="my-5">
-        <div class="d-flex">
-          <div class="col-1"></div>
-          <div class="col-2">
-            <div class="mt-5 w-75d">
-              <div
-                v-for="typology in typologies"
-                class="m-auto form-check rounded-2 text-center d-flex align-items-center fs-5 mb-2 border-bottom"
-              >
-                <input
-                  class="bd-checkbox form-check-input border-3"
-                  type="checkbox"
-                  :value="typology.name_typology"
-                  :id="'flexCheck_' + typology.name_typology"
-                  @click="() => onSelect(typology)"
-                />
-                <label
-                  class="form-check-label p-2"
-                  :for="'flexCheck_' + typology.name_typology"
+        <div class="container">
+          <div class="row row-cols-sm-1 row-cols-lg-2">
+            <div class="col-lg-2">
+              <div class="mt-5 w-75">
+                <div
+                  v-for="typology in typologies"
+                  class="m-auto form-check rounded-2 text-center d-flex align-items-center fs-5 mb-2 border-bottom"
                 >
-                  {{ typology.name_typology }}
-                </label>
-              </div>
-              <div class="d-flex py-3">
-                <router-link
-                  :to="{
-                    path: '/restaurants',
-                    query: { typologies: stringItems },
-                  }"
-                  class="nav-link"
-                >
-                  <button class="button-17 py-2">Vai ai ristoranti</button>
-                </router-link>
-              </div>
-            </div>
-          </div>
-          <div class="col-9">
-            <div class="w-75 m-auto">
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                <div v-for="restaurant in allRestaurants" class="col">
+                  <input
+                    class="bd-checkbox form-check-input border-3"
+                    type="checkbox"
+                    :value="typology.name_typology"
+                    :id="'flexCheck_' + typology.name_typology"
+                    @click="() => onSelect(typology)"
+                  />
+                  <label
+                    class="form-check-label p-2"
+                    :for="'flexCheck_' + typology.name_typology"
+                  >
+                    {{ typology.name_typology }}
+                  </label>
+                </div>
+                <div class="d-flex py-3">
                   <router-link
                     :to="{
-                      name: 'restaurant',
-                      params: { id: restaurant.id },
+                      path: '/restaurants',
+                      query: { typologies: stringItems },
                     }"
+                    class="nav-link"
                   >
-                    <div class="card shadow h-100">
-                      <div v-if="restaurant.cover_image == ''">
-                        <img
-                          style="width: 100%; aspect-ratio: 1 / 1"
-                          src="https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div v-else>
-                        <img
-                          class="card-img-top restaurant_images"
-                          :src="restaurant.cover_image"
-                          alt="Title"
-                        />
-                      </div>
-                      <div class="card-body">
-                        <h4 class="card-title">"{{ restaurant.name }}"</h4>
-
-                        <p
-                          v-for="typology in restaurant.typologies"
-                          class="card-text"
-                        >
-                          <i
-                            class="fa-solid fa-utensils"
-                            style="color: #fd7126"
-                          ></i>
-                          {{ typology.name_typology }}
-                        </p>
-                      </div>
-                    </div>
+                    <button class="button-17 py-2">Vai ai ristoranti</button>
                   </router-link>
                 </div>
               </div>
             </div>
+            <div class="col-lg-9">
+              <div class="w-100 m-auto">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <div v-for="restaurant in allRestaurants" class="col">
+                    <router-link
+                      :to="{
+                        name: 'restaurant',
+                        params: { id: restaurant.id },
+                      }"
+                    >
+                      <div class="card shadow h-100">
+                        <div v-if="restaurant.cover_image == ''">
+                          <img
+                            style="width: 100%; aspect-ratio: 1 / 1"
+                            src="https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div v-else>
+                          <img
+                            class="card-img-top restaurant_images"
+                            :src="restaurant.cover_image"
+                            alt="Title"
+                          />
+                        </div>
+                        <div class="card-body">
+                          <h4 class="card-title">"{{ restaurant.name }}"</h4>
+
+                          <p
+                            v-for="typology in restaurant.typologies"
+                            class="card-text"
+                          >
+                            <i
+                              class="fa-solid fa-utensils"
+                              style="color: #fd7126"
+                            ></i>
+                            {{ typology.name_typology }}
+                          </p>
+                        </div>
+                      </div>
+                    </router-link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container py-5"></div>
           </div>
-          <div class="container py-5"></div>
         </div>
       </section>
     </section>
@@ -200,8 +201,8 @@ export default {
 
     <section class="banner_consegna py-5">
       <div class="container consegna bg-white rounded-3 border-2 shadow">
-        <div class="row align-items-center">
-          <div class="col-6 px-5">
+        <div class="row row-cols-1 row-cols-md-2 align-items-center">
+          <div class="col-lg-6 px-5">
             <h1 class="mb-4">Noi consegnamo qui!</h1>
             <p class="fs-5">
               I piatti e i prodotti che ami, consegnati in pochissimo tempo.
@@ -220,16 +221,13 @@ export default {
               >
             </button>
           </div>
-          <div class="col-6 align-self-end map p-0">
+          <div class="col-lg-6 align-self-end map p-0">
             <img
               class="img-fluid"
               src="../assets/img/moncalvo.png"
               alt=""
               srcset=""
             />
-=======
-          <div class="col-6 align-self-center map pe-3">
-            <img class="img-fluid" src="../assets/img/moncalvo.png" alt="" srcset="" />
           </div>
         </div>
       </div>
