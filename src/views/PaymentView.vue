@@ -27,22 +27,60 @@ export default {
           console.error(err);
         });
     },
-    payWithCreditCard() {
-      if (this.hostedFieldInstance) {
-        this.error = "";
-        this.nonce = "";
-        this.hostedFieldInstance
-          .tokenize()
-          .then((payload) => {
-            console.log(payload);
-            this.nonce = payload.nonce;
-            this.submitForm();
-          })
-          .catch((err) => {
-            console.error(err);
-            this.error = err.message;
-          });
-      }
+    methods: {
+        getClientToken(){
+            axios
+            .get(this.base_url + this.orders_url)
+            .then((response) => {
+                this.clientToken = response.data.token
+                console.log(this.clientToken);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+        },
+        payWithCreditCard() {
+            if (this.hostedFieldInstance) {
+                this.error = "";
+                this.nonce = "";
+                this.hostedFieldInstance.tokenize().then(payload => {
+                    console.log(payload);
+                    this.nonce = payload.nonce;
+                    this.submitForm()
+                })
+                    .catch(err => {
+                        console.error(err);
+                        this.error = err.message;
+                    })
+            }
+        },
+
+        submitForm() {
+            let data = JSON.stringify({
+                "token": "fake-valid-nonce",
+                "amount": this.amount
+            });
+
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:8000/api/orders',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                data: data
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        }
     },
 
     submitForm() {

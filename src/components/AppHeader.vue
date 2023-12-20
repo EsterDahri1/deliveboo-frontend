@@ -112,9 +112,14 @@ export default {
 <style scoped lang="scss">
 @use "../assets/scss/partials/variables" as *;
 
+header {
+  height: 15vh;
+}
 .bg_header_footer {
   background-color: $del_danger;
+}
 
+.collapse {
   a {
     color: $del_light;
   }

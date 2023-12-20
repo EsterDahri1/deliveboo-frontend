@@ -74,6 +74,7 @@ export default {
           <h1 class="text-center fw-bold orange font pt-5 fs">
             Il tuo ristorante preferito ad un salto di distanza
           </h1>
+
           <div class="d-flex justify-content-center my-3 align-items-center">
             <h3 class="text-center pt-2 fw-bold">your craving right away</h3>
             <img
@@ -134,6 +135,7 @@ export default {
                   </label>
                 </div>
                 <div class="d-flex py-3">
+
                   <router-link
                     :to="{
                       path: '/restaurants',
@@ -142,6 +144,52 @@ export default {
                     class="nav-link"
                   >
                     <button class="button-17 py-2">Vai ai ristoranti</button>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="w-75 m-auto">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                <div v-for="restaurant in allRestaurants" class="col">
+
+                  <router-link
+                    :to="{
+                      path: '/restaurants',
+                      query: { typologies: stringItems },
+                    }"
+                    class="nav-link"
+                  >
+
+                    <button class="button-17 py-2">Vai ai ristoranti</button>
+
+                    <div class="card shadow h-100">
+                      <div v-if="restaurant.cover_image == ''">
+                        <img
+                          style="width: 100%; aspect-ratio: 1 / 1"
+                          src="https://media-assets.lacucinaitaliana.it/photos/61fb0393f9bff304ce3ec288/16:9/w_2560%2Cc_limit/Il-meglio-del-lago-di-Orta.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <div v-else>
+                        <img
+                          class="card-img-top restaurant_images"
+                          :src="restaurant.cover_image"
+                          alt="Title"
+                        />
+                      </div>
+                      <div class="card-body">
+                        <h4 class="card-title">{{ restaurant.name }}</h4>
+                        <p
+                          v-for="typology in restaurant.typologies"
+                          class="card-text"
+                        >
+                          {{ typology.name_typology }}
+                        </p>
+                      </div>
+                    </div>
+
                   </router-link>
                 </div>
               </div>
